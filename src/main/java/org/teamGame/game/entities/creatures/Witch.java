@@ -27,8 +27,6 @@ public class Witch extends Enemy{
     SpriteAnimation animation;
     Image enemy;
 
-    public  long lastSpellTimer, spellCoolDown = 3000, spellTimer = spellCoolDown;
-
     public Witch(Handler handler, double x, double y, int worldCount) {
         super(handler, Assets.witch, x, y);
 
@@ -46,13 +44,16 @@ public class Witch extends Enemy{
         bounds.setY(26);
         bounds.setWidth(24);
         bounds.setHeight(34);
+
+        skillManager.addSkill(1);
     }
 
     @Override
     public void tick(){
         super.tick();
         setAnimation();
-        checkSpells();
+
+        skillManager.checkAttackSkill1();
     }
 
     private void setAnimation(){
@@ -69,27 +70,6 @@ public class Witch extends Enemy{
             animation.setOffsetY(128);
         }
     }
-
-    private void checkSpells(){
-
-        spellTimer += System.currentTimeMillis() - lastSpellTimer;
-        lastSpellTimer = System.currentTimeMillis();
-        if(spellTimer < spellCoolDown){
-            return;
-        }
-
-        if(distance < 300*300){
-            handler.getWorld().getEntityManager().addBullet(new Spell(handler, Assets.player_bullet,
-                    x+20, y+30, 40, direction));
-            SoundPlayer.PlaySound(Sound.player_fired);
-        } else {
-            return;
-        }
-
-        spellTimer = 0;
-
-    }
-
 
     @Override
     protected boolean checkPlayerZone() {

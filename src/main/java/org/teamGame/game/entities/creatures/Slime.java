@@ -34,6 +34,8 @@ public class Slime extends Enemy{
         slimeDown = new ImageAnimation(135, Assets.slime_down);
         slimeLeft = new ImageAnimation(135, Assets.slime_left);
         slimeRight = new ImageAnimation(135, Assets.slime_right);
+
+        skillManager.addSkill(1);
     }
 
     @Override
@@ -43,6 +45,8 @@ public class Slime extends Enemy{
         slimeDown.tick();
         slimeLeft.tick();
         slimeRight.tick();
+
+        skillManager.checkAttackSkill1();
     }
 
     @Override

@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.media.MediaPlayer;
 import org.teamGame.game.Handler;
 import org.teamGame.game.configs.Configs;
+import org.teamGame.game.entities.creatures.skills.SkillManager;
 import org.teamGame.game.items.Item;
 import org.teamGame.sounds.Sound;
 import org.teamGame.game.state.GameState;
@@ -20,10 +21,15 @@ public abstract class Enemy extends Creature{
     double enemyX, enemyY, playerX, playerY, distance;
     double homeX, homeY;
 
+    //skill manager
+    SkillManager skillManager;
+
     public Enemy(Handler handler,  Image image, double x, double y) {
         super(handler, image, x, y, Configs.DEFAULT_CREATURE_WIDTH, Configs.DEFAULT_CREATURE_HEIGHT, 25);
         homeX = x;
         homeY = y;
+
+        skillManager = new SkillManager(handler, this);
     }
 
     @Override

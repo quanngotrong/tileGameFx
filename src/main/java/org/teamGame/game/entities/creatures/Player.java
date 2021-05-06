@@ -10,6 +10,7 @@ import javafx.util.Duration;
 import org.teamGame.game.Handler;
 import org.teamGame.game.configs.Configs;
 import org.teamGame.game.entities.Entity;
+import org.teamGame.game.entities.creatures.skills.SkillManager;
 import org.teamGame.game.entities.creatures.weapons.Bullet;
 import org.teamGame.game.entities.creatures.weapons.Sword;
 import org.teamGame.game.gfx.Assets;
@@ -31,6 +32,9 @@ public class Player extends Creature {
     protected SpriteAnimation animation;
     protected Image player;
 
+    //character
+    protected int character;
+
     //Attack Timer
     protected long lastAttackTimer, attackCoolDown = Configs.PLAYER_SWORD_COOL_DOWN, attackTimer = attackCoolDown;
     public static long lastSpellTimer, spellCoolDown = Configs.PLAYER_SPELL_COOL_DOWN, spellTimer = spellCoolDown;
@@ -45,6 +49,9 @@ public class Player extends Creature {
     //experience
     private long maxEx;
     private long ex;
+
+    //skill
+    SkillManager skillManager;
 
     public Player(Handler handler, double x, double y, int damage) {
         super(handler, Assets.player, x, y, Configs.DEFAULT_CREATURE_WIDTH, Configs.DEFAULT_CREATURE_HEIGHT, damage);
@@ -98,10 +105,45 @@ public class Player extends Creature {
         //show the property
         showProperty();
         showHPEX();
+
+        //skill
+        skillManager = new SkillManager(handler, this);
+        skillManager.addSkill(2);
+        handler.getGameController().getSkill1().setImage(Assets.fireBallSkill);
+        skillManager.addSkill(3);
+        handler.getGameController().getSkill2().setImage(Assets.swordSkill);
+    }
+
+    public void useSkill(){
+        if(skillManager.getCount() > 0) {
+            if(handler.getKeyManager().isSkill1()) {
+                skillManager.checkAttackSkill1();
+            }
+
+            if(skillManager.getCount() > 1){
+                if(handler.getKeyManager().isSkill2()) {
+                    skillManager.checkAttackSkill2();
+                }
+                if(skillManager.getCount() > 2){
+                    if(handler.getKeyManager().isSkill3()) {
+                        skillManager.checkAttackSkill3();
+                    }
+                    if(skillManager.getCount() > 3){
+                        if(handler.getKeyManager().isSkill4()) {
+                            skillManager.checkAttackSkill4();
+                        }
+                    }
+                }
+            }
+        }
+
+
+
     }
 
     public void showProperty(){
         handler.getGameController().getAttack().setText("attack: " + damage);
+        handler.getGameController().getAp().setText("ap: " + ap);
         handler.getGameController().getSpeed().setText("speed: " + speed);
         handler.getGameController().getDefence().setText("defence: " + defence);
     }
@@ -129,6 +171,7 @@ public class Player extends Creature {
 
     @Override
     public void tick() {
+
         //Movement
         getInput();
         move();
@@ -138,8 +181,8 @@ public class Player extends Creature {
 
         //Attack
         checkAttacks();
-        checkSpells();
-        checkCut();
+
+        useSkill();
 
         //inventory
         inventory.tick();
@@ -230,78 +273,6 @@ public class Player extends Creature {
                 setNewWorld();
             }
         }
-    }
-
-    //check spell
-    private void checkSpells(){
-        if(inventory.isActive()){
-            return;
-        }
-        spellTimer += System.currentTimeMillis() - lastSpellTimer;
-        lastSpellTimer = System.currentTimeMillis();
-        if(spellTimer < spellCoolDown){
-            return;
-        }
-
-        if(handler.getKeyManager().isDestroyThemAll()){
-            for(Entity e : handler.getWorld().getEntityManager().getEntities()){
-                if (e instanceof Enemy){
-                    e.takeDamage(1000);
-                }
-            }
-        }
-
-        if(handler.getKeyManager().isSpell()){
-            if(direction ==1) {
-                handler.getWorld().getEntityManager().addBullet(new Bullet(handler, Assets.player_ball1,
-                        x+20 , y+30 , Configs.PLAYER_BULLET_DAMAGE, direction));}
-            if(direction ==2) {
-                handler.getWorld().getEntityManager().addBullet(new Bullet(handler, Assets.player_ball2,
-                        x+20, y+35 , Configs.PLAYER_BULLET_DAMAGE, direction));}
-            if(direction ==3) {
-                handler.getWorld().getEntityManager().addBullet(new Bullet(handler, Assets.player_ball3,
-                        x+22, y+30 , Configs.PLAYER_BULLET_DAMAGE, direction));}
-            if(direction ==4) {
-                handler.getWorld().getEntityManager().addBullet(new Bullet(handler, Assets.player_ball4,
-                        x+35, y+30 , Configs.PLAYER_BULLET_DAMAGE, direction));}
-
-            SoundPlayer.PlaySound(Sound.player_fired);
-        } else {
-            return;
-        }
-
-        spellTimer = 0;
-
-    }
-
-    //check cut
-    private void checkCut() {
-        cutTimer += System.currentTimeMillis() - lastCutTimer;
-        lastCutTimer = System.currentTimeMillis();
-        if(cutTimer < cutCoolDown){
-            return;
-
-        }
-        if(handler.getKeyManager().isSpace()){
-            if(direction ==1) {
-                handler.getWorld().getEntityManager().addSword(new Sword(handler, Assets.player_sword1,
-                        x+33 , y+25 , Configs.PLAYER_SWORD_DAMAGE, direction));}
-            if(direction ==2) {
-                handler.getWorld().getEntityManager().addSword(new Sword(handler, Assets.player_sword2,
-                        x+34, y+25 , Configs.PLAYER_SWORD_DAMAGE, direction));}
-            if(direction ==3) {
-                handler.getWorld().getEntityManager().addSword(new Sword(handler, Assets.player_sword3,
-                        x+15, y+37 , Configs.PLAYER_SWORD_DAMAGE, direction));}
-            if(direction ==4) {
-                handler.getWorld().getEntityManager().addSword(new Sword(handler, Assets.player_sword4,
-                        x+15, y+37 , Configs.PLAYER_SWORD_DAMAGE, direction));}
-
-            SoundPlayer.PlaySound(Sound.player_sword);
-        } else {
-            return;
-        }
-
-        cutTimer = 0;
     }
 
     private void checkAttacks(){

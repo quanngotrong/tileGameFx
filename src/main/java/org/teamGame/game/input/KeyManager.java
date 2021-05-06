@@ -31,7 +31,7 @@ public class KeyManager {
     private EventHandler<KeyEvent> keyReleasedEventHandler = e -> {
 //        if(handler.isInGame()) {
             keys.put(e.getCode(), false);
-            if (e.getCode() == KeyCode.E) {
+            if (e.getCode() == KeyCode.F) {
                 handler.getWorld().getEntityManager().getPlayer().getInventory().changeActive();
             } else if (e.getCode() == KeyCode.DOWN) {
                 if (handler.getWorld().getEntityManager().getPlayer().getInventory().isActive()) {
@@ -71,9 +71,15 @@ public class KeyManager {
     public boolean isSpell(){
         return keys.getOrDefault(KeyCode.Q, false);
     }
+
     public boolean isDestroyThemAll(){
         return keys.getOrDefault(KeyCode.CONTROL, false) && keys.getOrDefault(KeyCode.TAB, false);
     }
+
+    public boolean isSkill1(){return keys.getOrDefault(KeyCode.Q, false);}
+    public boolean isSkill2(){return keys.getOrDefault(KeyCode.E, false);}
+    public boolean isSkill3(){return keys.getOrDefault(KeyCode.R, false);}
+    public boolean isSkill4(){return keys.getOrDefault(KeyCode.SPACE, false);}
 
     public boolean isEnter() {
         return keys.getOrDefault(KeyCode.ENTER, false);

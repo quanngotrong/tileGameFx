@@ -12,10 +12,14 @@ public abstract class Creature extends Entity {
     protected double xMove, yMove;
     protected int direction = 2; //1-up, 2-down, 3-left, 4-right
     protected int damage;
+    protected int ap;
 
     public Creature(Handler handler, Image image, double x, double y, int width, int height, int damage) {
         super(handler, image, x, y, width, height);
+
         this.damage = damage;
+        this.ap = 20;
+
         speed = Configs.DEFAULT_SPEED + handler.getDifficulty() + 0.5;
         defence = 5 + handler.getDifficulty()* 2;
         xMove = 0;
@@ -122,5 +126,13 @@ public abstract class Creature extends Entity {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public int getAp() {
+        return ap;
+    }
+
+    public void setAp(int ap) {
+        this.ap = ap;
     }
 }

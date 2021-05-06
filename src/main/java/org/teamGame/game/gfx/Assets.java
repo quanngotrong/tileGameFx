@@ -46,6 +46,9 @@ public class Assets {
     //npc
     public static Image male_npcs, female_npcs, children_npcs;
 
+    //skill
+    public static Image fireBallSkill, swordSkill;
+
     public static void init(){
         //boss
         bossblue = ImageLoader.loadImage("/textures/bossblue.png");
@@ -56,6 +59,10 @@ public class Assets {
         energyBall2 = e.crop(182 * 1,0,182,206);
         energyBall3 = e.crop(182 * 2,0,182,206);
         energyBall4 = e.crop(182 * 3,0,182,206);
+
+        //skill
+        fireBallSkill = ImageLoader.loadImage("/css/image/FireballIcon.png");
+        swordSkill = ImageLoader.loadImage("/css/image/swordSkill.jpg");
 
         //inventory
         inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");

@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import org.teamGame.game.GameManager;
 import org.teamGame.game.input.KeyManager;
@@ -44,6 +45,9 @@ public class GameController implements FxController{
     private Text attack;
 
     @FXML
+    private Text ap;
+
+    @FXML
     private Text speed;
 
     @FXML
@@ -60,6 +64,20 @@ public class GameController implements FxController{
 
     @FXML
     private Text hpShow;
+
+    @FXML
+    private ImageView skill1;
+
+    @FXML
+    private ImageView skill2;
+
+    @FXML
+    private ImageView skill3;
+
+    @FXML
+    private ImageView skill4;
+
+
 
     @FXML
     public void initialize(){
@@ -136,5 +154,45 @@ public class GameController implements FxController{
 
     public void setHpShow(Text hpShow) {
         this.hpShow = hpShow;
+    }
+
+    public Text getAp() {
+        return ap;
+    }
+
+    public void setAp(Text ap) {
+        this.ap = ap;
+    }
+
+    public ImageView getSkill1() {
+        return skill1;
+    }
+
+    public void setSkill1(ImageView skill1) {
+        this.skill1 = skill1;
+    }
+
+    public ImageView getSkill2() {
+        return skill2;
+    }
+
+    public void setSkill2(ImageView skill2) {
+        this.skill2 = skill2;
+    }
+
+    public ImageView getSkill3() {
+        return skill3;
+    }
+
+    public void setSkill3(ImageView skill3) {
+        this.skill3 = skill3;
+    }
+
+    public ImageView getSkill4() {
+        return skill4;
+    }
+
+    public void setSkill4(ImageView skill4) {
+        this.skill4 = skill4;
     }
 }

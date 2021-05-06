@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import org.teamGame.game.Handler;
 import org.teamGame.game.configs.Configs;
+import org.teamGame.game.entities.creatures.skills.SkillManager;
 import org.teamGame.game.gfx.Assets;
 import org.teamGame.game.gfx.SpriteAnimation;
 import org.teamGame.game.state.GameState;
@@ -42,12 +43,17 @@ public class Skeleton extends Enemy{
         bounds.setWidth(16);
         bounds.setHeight(24);
 
+        skillManager.addSkill(1);
     }
+
+
 
     @Override
     public void tick() {
         super.tick();
         setAnimation();
+
+        skillManager.checkAttackSkill1();
     }
 
     private void setAnimation(){

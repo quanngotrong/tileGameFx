@@ -18,14 +18,11 @@
 }
 
 #hpShow{
-    -fx-display: block;
     -fx-text-alignment: center;
-    -fx-fill: red;
 }
 #exShow{
-    -fx-text-align: center;
+    -fx-text-alignment: center;
 }
 .skillView{
-    -fx-display: block;
-    -fx-background-color: red;
+    -fx-image: url("image/lock.jpg");
 }

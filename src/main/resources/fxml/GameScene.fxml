@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="container" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/GameScene.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
@@ -17,21 +18,27 @@
          <children>
             <AnchorPane fx:id="container11" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Text fx:id="attack" fill="#c0d095" layoutX="7.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="attack" wrappingWidth="131.7294921875" />
-                  <Text fx:id="speed" fill="#c0d095" layoutX="9.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="speed" wrappingWidth="131.7294921875" />
-                  <Text fx:id="defence" fill="#c0d095" layoutX="7.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="defence" wrappingWidth="130.20947265625" />
+                  <Text fx:id="attack" fill="#c0d095" layoutX="6.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="attack" wrappingWidth="131.7294921875" />
+                  <Text fx:id="speed" fill="#c0d095" layoutX="6.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="speed" wrappingWidth="131.7294921875" />
+                  <Text fx:id="defence" fill="#c0d095" layoutX="5.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="defence" wrappingWidth="130.20947265625" />
+                  <Text fx:id="ap" fill="#c0d095" layoutX="7.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ap" wrappingWidth="130.20947265625" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="container12" prefHeight="100.0" prefWidth="295.0">
                <children>
-                  <ProgressBar fx:id="hpBar" layoutX="5.0" layoutY="58.0" prefHeight="14.0" prefWidth="273.0" progress="0.0" style="-fx-background-color: red;" />
-                  <ProgressBar fx:id="exBar" layoutX="6.0" layoutY="80.0" prefHeight="13.0" prefWidth="273.0" progress="0.0" />
-                  <ImageView fx:id="skill1" fitHeight="34.0" fitWidth="45.0" layoutX="21.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" styleClass="skillView" />
-                  <ImageView fx:id="skill2" fitHeight="34.0" fitWidth="45.0" layoutX="81.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" styleClass="skillView" />
-                  <ImageView fx:id="skill3" fitHeight="34.0" fitWidth="45.0" layoutX="143.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" styleClass="skillView" />
-                  <ImageView fx:id="skill4" fitHeight="34.0" fitWidth="45.0" layoutX="210.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" styleClass="skillView" />
-                  <Text fx:id="exShow" layoutX="95.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="95.7294921875" />
-                  <Text fx:id="hpShow" layoutX="94.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="95.7294921875" />
+                  <ProgressBar fx:id="hpBar" layoutX="2.0" layoutY="57.0" prefHeight="14.0" prefWidth="273.0" progress="0.0" style="-fx-accent: red;" />
+                  <ProgressBar fx:id="exBar" layoutX="2.0" layoutY="75.0" prefHeight="13.0" prefWidth="273.0" progress="0.0" />
+                  <ImageView fx:id="skill1" fitHeight="56.0" fitWidth="70.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true" styleClass="skillView" />
+                  <ImageView fx:id="skill2" fitHeight="56.0" fitWidth="56.0" layoutX="76.0" pickOnBounds="true" preserveRatio="true" styleClass="skillView" />
+                  <ImageView fx:id="skill3" fitHeight="56.0" fitWidth="56.0" layoutX="140.0" pickOnBounds="true" preserveRatio="true" styleClass="skillView" />
+                  <ImageView fx:id="skill4" fitHeight="56.0" fitWidth="62.0" layoutX="203.0" pickOnBounds="true" preserveRatio="true" styleClass="skillView" />
+                  <Text fx:id="exShow" layoutX="91.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="95.7294921875" />
+                  <Text fx:id="hpShow" layoutX="91.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="95.7294921875" />
+                  <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q" />
+                  <Text layoutX="77.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E" />
+                  <Text layoutX="140.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R" />
+                  <Text layoutX="203.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Space" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="56.0" layoutX="14.0" opacity="0.36" stroke="BLACK" strokeType="INSIDE" width="56.0" />
                </children>
             </AnchorPane>
             <GridPane fx:id="containter13">

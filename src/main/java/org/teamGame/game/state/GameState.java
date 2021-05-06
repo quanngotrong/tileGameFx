@@ -110,27 +110,6 @@ public class GameState {
     public void render(GraphicsContext g){
         world[0].render(g);
 
-        //DRAW SCORES
-        g.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
-        g.setFill(Color.LAVENDER);
-        g.fillRect(Configs.STAGE_WIDTH - 200, 0, 200, 30);
-        g.setFill(Color.BLACK);
-//        g.fillText("Điểm số: " + Settings.SCORES, Settings.STAGE_WIDTH - 190, 22);
-        g.fillText("Điểm số: " + gold, Configs.STAGE_WIDTH - 190, 22);
-
-
-        //DRAW HEALTH BAR
-        double percent = (double) handler.getWorld().getEntityManager().getPlayer().getHealth() /
-                (double) handler.getWorld().getEntityManager().getPlayer().getMaxHealth();
-        g.setFill(Color.BURLYWOOD);
-        g.fillRoundRect(200, 553, 400,10, 20, 20);
-        g.setFill(Color.RED);
-        g.fillRoundRect(200, 553, percent * 400,10, 20, 20);
-        g.setFont(Font.font("Verdana", FontWeight.BOLD, 9));
-        g.setFill(Color.WHITE);
-        g.fillText(handler.getWorld().getEntityManager().getPlayer().getHealth() + " / "
-                + handler.getWorld().getEntityManager().getPlayer().getMaxHealth(), 380, 561);
-
         //DRAW SPELL COOL DOWN
         g.setFill(Color.BLACK);
         g.strokeOval(620, 520,40,40);
