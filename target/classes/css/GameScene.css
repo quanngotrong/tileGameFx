@@ -1,0 +1,31 @@
+#container1 {
+    -fx-background-color: #5b6d5b;
+    -fx-border-style: solid;
+    -fx-border-width: 5px;
+}
+
+#container11{
+    -fx-background-color: #8e9775;
+}
+
+#container11{
+    -fx-background-color: #4a503d;
+
+}
+
+#container11{
+    -fx-background-color: #334443;
+}
+
+#hpShow{
+    -fx-display: block;
+    -fx-text-alignment: center;
+    -fx-fill: red;
+}
+#exShow{
+    -fx-text-align: center;
+}
+.skillView{
+    -fx-display: block;
+    -fx-background-color: red;
+}

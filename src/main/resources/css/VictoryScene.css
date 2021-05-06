@@ -1,0 +1,24 @@
+AnchorPane {
+    -fx-background-image: url("image/victory.jpg");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}
+
+#restart{
+    -fx-background-image: url("image/restart_button.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+
+}
+
+#exit{
+    -fx-background-image: url("image/exit_button.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+
+}
