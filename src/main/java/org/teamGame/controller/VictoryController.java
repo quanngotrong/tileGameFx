@@ -26,6 +26,9 @@ public class VictoryController implements FxController {
         this.restart.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                handlerApp.getVictoryScene().stopSound();
+                handlerApp.getStartScene().playSound();
+
                 handlerApp.getStage().setScene(handlerApp.getApp().getStartScene().getScene());
             }
         });

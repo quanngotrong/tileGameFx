@@ -15,8 +15,6 @@ public class Assets {
     public static Image[][] map2 = new Image[30][30];
     public static Image[][] map3 = new Image[30][30];
     public static Image[][] map4 = new Image[30][30];
-    public static Image background, gameover, pause, victory;
-    public static Image start, exit, mute_unmute, restart, main_menu, back, credits, resume;
 
 
     public static Image[] slime_up, slime_down, slime_left, slime_right;
@@ -33,6 +31,7 @@ public class Assets {
 
     //item
     public static Image lotionMana, lotionHP, lotionDamage;
+    public static Image sword1, sword2, armor1, armor2, jewelry, scepter1, scepter2, map;
 
     //inventory
     public static Image inventoryScreen;
@@ -46,10 +45,25 @@ public class Assets {
     //npc
     public static Image male_npcs, female_npcs, children_npcs;
 
+    //ảnh đại diện nhân vật
+    public static Image character0;
+    public static Image character1;
+    public static Image character2;
+    public static Image character3;
+    public static Image character4;
+    public static Image character5;
+    public static Image character6;
+    public static Image character7;
+    public static Image character8;
+    public static Image character9;
+
     //skill
     public static Image fireBallSkill, swordSkill;
 
+    public static Image lock;
+
     public static void init(){
+
         //boss
         bossblue = ImageLoader.loadImage("/textures/bossblue.png");
         firebreath = ImageLoader.loadImage("/textures/boss/fireball3.png");
@@ -110,7 +124,7 @@ public class Assets {
         player = ImageLoader.loadImage("/textures/player.png");
         witch = ImageLoader.loadImage("/textures/witch.png");
 
-        //checkpoint
+        //check
         checkpoint = teleport.crop(40, 180, 430, 430);
 
         //bullet
@@ -167,9 +181,36 @@ public class Assets {
         lotionHP = sheet_item.crop(64 * 4, 0, 64, 64);
         lotionDamage = sheet_item.crop(64 * 5, 0, 64, 64);
 
+        sword1 = sheet_item.crop(64, 0, 64, 64);
+        sword2 = sheet_item.crop(64, 64*5, 64, 64);
+        armor1 = sheet_item.crop(0, 64, 64, 64);
+        armor2 = sheet_item.crop(64, 64 * 6, 64, 64);
+        jewelry = sheet_item.crop(64 * 5, 64 * 5, 64, 64);
+        scepter1 = sheet_item.crop(0, 3 * 64, 64, 64);
+        scepter2 = sheet_item.crop(0, 4 * 64, 64 ,64);
+        map = sheet_item.crop(5 * 64 , 3 * 64, 64, 64);
+
         //NPCs
         male_npcs = ImageLoader.loadImage("/textures/male_npcs.png", 528, 528);
         female_npcs = ImageLoader.loadImage("/textures/female_npcs.png", 528, 528);
         children_npcs = ImageLoader.loadImage("/textures/children_npcs.png", 528, 528);
+
+        //character
+        SpriteSheet playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player.png"));
+        SpriteSheet femaleSheet = new SpriteSheet(ImageLoader.loadImage("/textures/female_npcs.png"));
+        SpriteSheet maleSheet = new SpriteSheet(ImageLoader.loadImage("/textures/male_npcs.png"));
+        SpriteSheet childrenSheet = new SpriteSheet(ImageLoader.loadImage("/textures/children_npcs.png"));
+        character0 = playerSheet.crop(0, 64 * 2, 64, 64);
+        character1 = maleSheet.crop(80, 480, 80, 120);//Monk
+        character2 = femaleSheet.crop(80, 0, 80, 120);//jill
+        character3 = maleSheet.crop(80, 0 , 80, 120); //jack
+        character4 = maleSheet.crop( 560, 0, 80, 120); //guard
+        character5 = childrenSheet.crop(80,0, 80, 120); //green hair
+        character6 = femaleSheet.crop(320, 0, 80, 120); //grandma
+        character7 = femaleSheet.crop(560, 0, 80, 120); // female guard
+        character8 = maleSheet.crop(320, 0, 80, 120); //farmer
+        character9 = childrenSheet.crop(560, 0, 80, 120); //blue hat
+
+        lock = ImageLoader.loadImage("/css/image/lock.jpg");
     }
 }

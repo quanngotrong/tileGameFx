@@ -2,16 +2,18 @@ package org.teamGame.sounds;
 
 import javafx.scene.media.MediaPlayer;
 import org.teamGame.game.Handler;
+import org.teamGame.util.HandlerApp;
 
 import java.util.ArrayList;
 
 public class SoundManager {
 
-    private Handler handler;
+    private HandlerApp handlerApp;
     private ArrayList<MediaPlayer> sounds;
 
-    public SoundManager(Handler handler) {
-        this.handler = handler;
+
+    public SoundManager(HandlerApp handlerApp){
+        this.handlerApp = handlerApp;
         sounds = new ArrayList<>();
     }
 

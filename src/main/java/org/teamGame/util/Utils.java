@@ -1,5 +1,13 @@
 package org.teamGame.util;
 
+import javafx.scene.image.Image;
+import org.teamGame.StartApp;
+import org.teamGame.controller.LoadController;
+import org.teamGame.game.gfx.Assets;
+import org.teamGame.save.ResourceManager;
+import org.teamGame.save.SaveData;
+import org.teamGame.save.SaveDataGame;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -34,4 +42,58 @@ public class Utils {
         }
     }
 
+    //load data
+    public static SaveData loadData(){
+        try {
+            SaveData saveData = (SaveData) ResourceManager.load("src/main/resources/SavedData/savedData.save");
+            return saveData;
+        }
+        catch(Exception e){
+            System.out.println("Couldn't load: " + e.getMessage());
+            return null;
+        }
+
+    }
+
+    //save data
+    public static void saveData(SaveData saveData){
+        try{
+            ResourceManager.save(StartApp.getSaveData(), "src/main/resources/SavedData/savedData.save");
+        }
+        catch (Exception e){
+            System.out.println("Couldn't save: " + e.getMessage());
+        }
+    }
+
+    //choose character
+    public static Image chooseCharacter(int i){
+        if(i == 1){
+            return Assets.character1;
+        }
+        if(i == 2){
+            return Assets.character2;
+        }
+        if(i == 3){
+            return Assets.character3;
+        }
+        if(i == 4){
+            return Assets.character4;
+        }
+        if(i == 5){
+            return Assets.character5;
+        }
+        if(i == 6){
+            return Assets.character6;
+        }
+        if(i == 7){
+            return Assets.character7;
+        }
+        if(i == 8){
+            return Assets.character8;
+        }
+        if(i == 9){
+            return Assets.character9;
+        }
+        return Assets.character0;
+    }
 }

@@ -23,6 +23,7 @@ public class CreditController implements FxController{
         this.returnB.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+
                 handlerApp.getStage().setScene(handlerApp.getApp().getStartScene().getScene());
             }
         });

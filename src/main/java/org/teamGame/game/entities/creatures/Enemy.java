@@ -2,6 +2,7 @@ package org.teamGame.game.entities.creatures;
 
 import javafx.scene.image.Image;
 import javafx.scene.media.MediaPlayer;
+import org.teamGame.StartApp;
 import org.teamGame.game.Handler;
 import org.teamGame.game.configs.Configs;
 import org.teamGame.game.entities.creatures.skills.SkillManager;
@@ -21,6 +22,12 @@ public abstract class Enemy extends Creature{
     double enemyX, enemyY, playerX, playerY, distance;
     double homeX, homeY;
 
+    //experience
+    private int ex;
+
+    //gold
+    private int gold;
+
     //skill manager
     SkillManager skillManager;
 
@@ -30,6 +37,8 @@ public abstract class Enemy extends Creature{
         homeY = y;
 
         skillManager = new SkillManager(handler, this);
+        ex = 10;
+        gold = 100;
     }
 
     @Override
@@ -150,9 +159,12 @@ public abstract class Enemy extends Creature{
         }
     }
 
+    /*
+    tăng kinh nghiệm và tăng vàng
+     */
     @Override
     public void die() {
-        GameState.gold++;
+
         handler.getWorld().setEnemyOnBoard(handler.getWorld().getEnemyOnBoard() - 1);
         System.out.println(GameState.gold);
         // System.out.println("xin lũiiii mà :(");
@@ -166,6 +178,18 @@ public abstract class Enemy extends Creature{
             handler.getWorld().getItemManager().addItem(Item.lotionAttack.createNew((int) x, (int) y));
         }
 
+        handler.getWorld().getEntityManager().getPlayer().addExpe(ex);
+
+        StartApp.gold += gold;
+
         active = false;
+    }
+
+    public int getEx() {
+        return ex;
+    }
+
+    public void setEx(int ex) {
+        this.ex = ex;
     }
 }

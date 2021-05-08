@@ -2,10 +2,12 @@ package org.teamGame.game.worlds;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import org.teamGame.StartApp;
 import org.teamGame.game.Handler;
 import org.teamGame.game.configs.Configs;
 import org.teamGame.game.entities.EntityManager;
 import org.teamGame.game.entities.creatures.Player;
+import org.teamGame.game.gfx.Assets;
 import org.teamGame.game.items.ItemManager;
 import org.teamGame.game.maps.Tile;
 import org.teamGame.util.Utils;
@@ -50,7 +52,17 @@ public class World {
             spawnY = spawnYPre;
         }
 
-        entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY, Configs.PLAYER_SWORD_DAMAGE));
+        //choose player
+        int saved = handler.getGameManager().getSaved();
+        int character = StartApp.getSaveData().savedGame.get(saved).getCharacter();
+
+        if(character == 0){
+            entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY, Configs.PLAYER_SWORD_DAMAGE));
+        }
+        else {
+            entityManager = new EntityManager(handler, new Player(handler, Assets.male_npcs,
+                    spawnX, spawnY, 0, 264, 462, 264, 330, 396, Configs.PLAYER_SWORD_DAMAGE));
+        }
         itemManager = new ItemManager(handler);
     }
 

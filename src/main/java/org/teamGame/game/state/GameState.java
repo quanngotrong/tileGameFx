@@ -5,6 +5,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import org.teamGame.StartApp;
 import org.teamGame.game.Handler;
 import org.teamGame.game.configs.Configs;
 import org.teamGame.game.entities.EntityManager;
@@ -16,8 +17,6 @@ import org.teamGame.sounds.Sound;
 import org.teamGame.game.worlds.World;
 
 public class GameState {
-
-    //"src/main/resources/worlds/world1.txt"
 
     Handler handler;
 
@@ -110,44 +109,12 @@ public class GameState {
     public void render(GraphicsContext g){
         world[0].render(g);
 
-        //DRAW SPELL COOL DOWN
-        g.setFill(Color.BLACK);
-        g.strokeOval(620, 520,40,40);
+        //DRAW gold
         g.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
-        double spellCoolDown;
-        if(Player.spellCoolDown - Player.spellTimer < 0){
-            g.setFill(Color.GREEN);
-            g.fillOval(620, 520, 40, 40);
-            g.drawImage(Assets.player_ball4, 622, 520);
-        } else {
-            spellCoolDown = ((double) (Player.spellCoolDown - Player.spellTimer)/1000);
-            if (spellCoolDown >= 1) {
-                spellCoolDown = Math.floor((double) (Player.spellCoolDown - Player.spellTimer)/1000);
-                int scd = (int) spellCoolDown;
-                g.fillText(scd + "s", 627,546);
-            } else {
-                spellCoolDown = Math.round(spellCoolDown * 10.0) / 10.0;
-                g.fillText(String.valueOf(spellCoolDown), 622,546);
-            }
-        }
-        g.setFont(Font.font("Verdana", FontWeight.BOLD, 7));
-        g.setFill(Color.web("#e2fbff"));
-        g.fillRoundRect(625, 555, 30,10, 10,10);
+        g.setFill(Color.LAVENDER);
+        g.fillRect(Configs.STAGE_WIDTH - 200, 0, 200, 30);
         g.setFill(Color.BLACK);
-        g.fillText("Q", 636,562);
-
-        //DRAW SWORD COOL DOWN
-        g.setFill(Color.BLACK);
-        g.strokeOval(680, 520,40,40);
-        g.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
-        g.setFill(Color.GREEN);
-        g.fillOval(680, 520, 40, 40);
-        g.drawImage(Assets.player_sword4, 675, 532);
-
-        g.setFont(Font.font("Verdana", FontWeight.BOLD, 7));
-        g.setFill(Color.web("#e2fbff"));
-        g.fillRoundRect(686, 555, 30,10, 10,10);
-        g.setFill(Color.BLACK);
-        g.fillText("Space", 690,562);
+//        g.fillText("Điểm số: " + Settings.SCORES, Settings.STAGE_WIDTH - 190, 22);
+        g.fillText("Gold: " + StartApp.getGold(), Configs.STAGE_WIDTH - 190, 22);
     }
 }

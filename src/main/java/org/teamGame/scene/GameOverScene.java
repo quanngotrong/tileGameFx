@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import org.teamGame.controller.CreditController;
 import org.teamGame.controller.GameOverController;
+import org.teamGame.game.configs.Configs;
+import org.teamGame.sounds.Sound;
 import org.teamGame.util.HandlerApp;
 
 import java.io.IOException;
@@ -12,6 +14,12 @@ import java.io.IOException;
 public class GameOverScene extends SceneFx{
     public GameOverScene(HandlerApp handlerApp) {
         super(handlerApp, "GameOverScene");
+        //music
+        sceneSound = Sound.gameover;
+        handlerApp.getSoundManager().addSound(sceneSound);
+//        if(!Configs.IS_MUTE)
+//            sceneSound.play();
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+ fxml+ ".fxml"));
         fxmlLoader.setController(new GameOverController(handlerApp));
 

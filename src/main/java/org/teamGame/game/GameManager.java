@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import org.teamGame.StartApp;
 import org.teamGame.controller.GameController;
 import org.teamGame.game.configs.Configs;
 import org.teamGame.game.gfx.Assets;
@@ -18,10 +19,10 @@ import org.teamGame.util.HandlerApp;
 
 public class GameManager {
     //handler app
-    HandlerApp handlerApp;
+    private HandlerApp handlerApp;
 
     //handler game
-    Handler handler;
+    private Handler handler;
 
     //container and display
     private GameController gameController;
@@ -36,40 +37,44 @@ public class GameManager {
     private GameScene gameScene;
 
     //input
-    KeyManager keyManager;
-    MouseManager mouseManager;
+    private KeyManager keyManager;
+    private MouseManager mouseManager;
 
     //sounds
-    SoundManager soundManager;
+    private SoundManager soundManager;
 
     //game camera
-    GameCamera gameCamera;
+    private GameCamera gameCamera;
 
     //loop
-    long timePerUpDate;
-    long start;
+    private long timePerUpDate;
+    private long start;
 
     //game state
-    GameState gameState;
+    private GameState gameState;
 
     //timer
-    AnimationTimer myTimer;
+    private AnimationTimer myTimer;
+
+    //saved
+    private int saved;
 
     /*
     tao game voi do kho cho san
      */
-    public GameManager(HandlerApp handlerApp, int difficulty, GameController gameController){
+    public GameManager(HandlerApp handlerApp, GameController gameController, int saved){
         this.handlerApp = handlerApp;
         handlerApp.setGameManager(this);
 
         //create handler and set difficulty
         this.handler = new Handler(this);
-        handler.setDifficulty(difficulty);
 
         //create container: canvas
         this.gameController = gameController;
         this.canvas = gameController.getCanvas();
 
+        this.saved = saved;
+        handler.setDifficulty(StartApp.getSaveData().savedGame.get(saved).getDifficulty());
     }
 
     //initialize assets
@@ -93,7 +98,7 @@ public class GameManager {
         mouseManager.addListener();
 
         //sound
-        soundManager = new SoundManager(handler);
+        soundManager = handlerApp.getSoundManager();
 
         //camera
         gameCamera = new GameCamera(handler, 0, 0);
@@ -285,5 +290,13 @@ public class GameManager {
 
     public void setMyTimer(AnimationTimer myTimer) {
         this.myTimer = myTimer;
+    }
+
+    public int getSaved() {
+        return saved;
+    }
+
+    public void setSaved(int saved) {
+        this.saved = saved;
     }
 }

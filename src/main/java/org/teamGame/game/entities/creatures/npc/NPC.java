@@ -24,6 +24,7 @@ public abstract class NPC extends Creature {
     int offsetY;
     int width = 44;
     int height = 66;
+
     boolean isSpoken = false, flag = false, isRandomMove = false;
     SpriteAnimation animation;
     Image npc;

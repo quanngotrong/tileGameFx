@@ -1,8 +1,10 @@
 package org.teamGame.game.entities.creatures.skills;
 
+import javafx.scene.image.ImageView;
 import org.teamGame.game.Handler;
 import org.teamGame.game.entities.creatures.Enemy;
 import org.teamGame.game.entities.creatures.Player;
+import org.teamGame.game.gfx.Assets;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -53,7 +55,7 @@ public class SkillManager {
         count = 0;
         skillArray = new ArrayList<Skill>();
     }
-
+    //use skill
     public void checkAttackSkill1(){
         skillArray.get(0).attack();
     }
@@ -70,10 +72,17 @@ public class SkillManager {
         skillArray.get(3).attack();
     }
 
+    //show countDown
+    public void showCountDown(){
+        for(int i = 0; i< count; i++){
+            skillArray.get(i).showCountDown();
+        }
+    }
+
     /*
     skill 1: spellSkill
     skill 2: bulletSkill
-    skill 3:
+    skill 3: swordSkill
      */
     public void addSkill(int skill){
         // neu khong la player
@@ -84,13 +93,13 @@ public class SkillManager {
                     count++;
                     switch (skill) {
                         case 1:
-                            skillArray.add(new SpellSkill(handler, isPlayer, enemy));
+                            skillArray.add(new SpellSkill(handler, isPlayer, enemy, i));
                             break;
                         case 2:
-                            skillArray.add(new BulletSkill(handler, isPlayer, enemy));
+                            skillArray.add(new BulletSkill(handler, isPlayer, enemy, i));
                             break;
                         case 3:
-                            skillArray.add(new SwordSkill(handler, isPlayer, enemy));
+                            skillArray.add(new SwordSkill(handler, isPlayer, enemy, i));
                             break;
                     }
                     break;
@@ -101,17 +110,35 @@ public class SkillManager {
         else{
             for (int i = 1; i <= 4; i++) {
                 if (skills[i] == 0) {
+                    ImageView imageView = new ImageView();
+                    switch (i){
+                        case 1:
+                            imageView = handler.getGameController().getSkill1();
+                            break;
+                        case 2:
+                            imageView = handler.getGameController().getSkill2();
+                            break;
+                        case 3:
+                            imageView = handler.getGameController().getSkill3();
+                            break;
+                        case 4:
+                            imageView = handler.getGameController().getSkill4();
+                            break;
+                    }
+
                     skills[i] = skill;
                     count++;
                     switch (skill) {
                         case 1:
-                            skillArray.add(new SpellSkill(handler, isPlayer, player));
+                            skillArray.add(new SpellSkill(handler, isPlayer, player, i));
                             break;
                         case 2:
-                            skillArray.add(new BulletSkill(handler, isPlayer, player));
+                            skillArray.add(new BulletSkill(handler, isPlayer, player, i));
+                            imageView.setImage(Assets.fireBallSkill);
                             break;
                         case 3:
-                            skillArray.add(new SwordSkill(handler, isPlayer, player));
+                            skillArray.add(new SwordSkill(handler, isPlayer, player, i));
+                            imageView.setImage(Assets.swordSkill);
                             break;
                     }
                     break;

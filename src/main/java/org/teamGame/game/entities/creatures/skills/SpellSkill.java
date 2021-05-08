@@ -10,21 +10,27 @@ import org.teamGame.sounds.SoundPlayer;
 
 public class SpellSkill extends Skill{
 
-    public  long lastSpellTimer, spellCoolDown = 3000, spellTimer = spellCoolDown;
+    public SpellSkill(Handler handler, int i, Enemy enemy, int order) {
+        super(handler, i, enemy, order);
 
-    public SpellSkill(Handler handler, int i, Enemy enemy) {
-        super(handler, i, enemy);
+        countDown = 3000;
+        timer = 3000;
     }
 
-    public SpellSkill(Handler handler, int i, Player player) {
-        super(handler, i, player);
+    public SpellSkill(Handler handler, int i, Player player, int order) {
+        super(handler, i, player, order);
+
+        countDown = 3000;
+        timer = 3000;
     }
 
     @Override
     public void attack(){
-        spellTimer += System.currentTimeMillis() - lastSpellTimer;
-        lastSpellTimer = System.currentTimeMillis();
-        if(spellTimer < spellCoolDown){
+
+
+        timer += System.currentTimeMillis() - lastTimer;
+        lastTimer = System.currentTimeMillis();
+        if(timer < countDown){
             return;
         }
 
@@ -36,7 +42,8 @@ public class SpellSkill extends Skill{
             return;
         }
 
-        spellTimer = 0;
+        timer = 0;
     }
+
 
 }

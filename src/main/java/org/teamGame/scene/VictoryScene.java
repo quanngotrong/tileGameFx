@@ -5,13 +5,22 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import org.teamGame.controller.GameOverController;
 import org.teamGame.controller.VictoryController;
+import org.teamGame.game.configs.Configs;
+import org.teamGame.sounds.Sound;
 import org.teamGame.util.HandlerApp;
 
 import java.io.IOException;
 
 public class VictoryScene extends SceneFx{
     public VictoryScene(HandlerApp handlerApp) {
-        super(handlerApp, "GameOverScene");
+        super(handlerApp, "VictoryScene");
+
+        //music
+        sceneSound = Sound.victory;
+        handlerApp.getSoundManager().addSound(sceneSound);
+//        if(!Configs.IS_MUTE)
+//            sceneSound.play();
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+ fxml+ ".fxml"));
         fxmlLoader.setController(new VictoryController(handlerApp));
 

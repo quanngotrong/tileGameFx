@@ -5,11 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import org.teamGame.StartApp;
 import org.teamGame.game.input.KeyManager;
-import org.teamGame.scene.CreditScene;
-import org.teamGame.scene.DifficultyScene;
-import org.teamGame.scene.GameScene;
-import org.teamGame.scene.StartScene;
+import org.teamGame.scene.*;
 import org.teamGame.util.HandlerApp;
 
 import java.io.IOException;
@@ -40,23 +38,26 @@ public class StartMenuController implements FxController {
         this.startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                DifficultyScene difficultyScene = new DifficultyScene(handlerApp);
-
-                handlerApp.getStage().setScene(difficultyScene.getScene());
-
+                handlerApp.getStage().setScene(handlerApp.getDifficultyScene().getScene());
             }
         });
 
         this.creditButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                CreditScene creditScene = new CreditScene(handlerApp);
-                handlerApp.getStage().setScene(creditScene.getScene());
+                handlerApp.getStage().setScene(handlerApp.getCreditScene().getScene());
             }
         });
 
         this.exitButton.setOnAction(actionEvent -> Platform.exit());
 
+        this.continueButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                handlerApp.getLoadScene().refreshLoadScene();
+                handlerApp.getStage().setScene(handlerApp.getLoadScene().getScene());
+            }
+        });
     }
 
 }

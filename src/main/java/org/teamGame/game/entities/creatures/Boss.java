@@ -220,6 +220,10 @@ public class Boss extends Enemy{
         System.out.println(Configs.GOLD);
         // System.out.println("xin lũiiii mà :(");
 
+        //tat nhac
+        handler.getSoundManager().soundOff();
+        handler.getGameManager().getHandlerApp().getVictoryScene().playSound();
+
         handler.setWin(true);
         handler.getGameManager().getMyTimer().stop();
         handler.getGameManager().getHandlerApp().getStage().setScene(handler.getGameManager().getHandlerApp().getVictoryScene().getScene());

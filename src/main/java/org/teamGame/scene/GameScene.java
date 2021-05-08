@@ -5,20 +5,27 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import org.teamGame.controller.GameController;
 import org.teamGame.controller.StartMenuController;
+import org.teamGame.game.configs.Configs;
+import org.teamGame.sounds.Sound;
 import org.teamGame.util.HandlerApp;
 
 import java.io.IOException;
 
 public class GameScene extends SceneFx{
 
-    private int difficulty;
-
-    public GameScene(HandlerApp handlerApp, int difficulty) {
+    private int saved;
+    public GameScene(HandlerApp handlerApp, int saved) {
         super(handlerApp, "GameScene");
-        this.difficulty = difficulty;
+
+        this.saved = saved;
+        //music
+        sceneSound = Sound.main;
+        handlerApp.getSoundManager().addSound(sceneSound);
+//        if(!Configs.IS_MUTE)
+//            sceneSound.play();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+ fxml+ ".fxml"));
-        fxmlLoader.setController(new GameController(handlerApp, difficulty, this));
+        fxmlLoader.setController(new GameController(handlerApp, this, this.saved));
 
         AnchorPane root = null;
         try {

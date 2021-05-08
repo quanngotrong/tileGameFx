@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import org.teamGame.StartApp;
 import org.teamGame.game.Handler;
 import org.teamGame.game.configs.Configs;
 import org.teamGame.game.entities.Entity;
@@ -17,23 +18,32 @@ import org.teamGame.game.gfx.Assets;
 import org.teamGame.game.gfx.SpriteAnimation;
 import org.teamGame.game.inventory.Inventory;
 import org.teamGame.game.state.GameState;
+import org.teamGame.save.SaveDataGame;
 import org.teamGame.sounds.Sound;
 import org.teamGame.sounds.SoundPlayer;
 
 public class Player extends Creature {
 
-    protected int count = 9;
-    protected int columns = 9;
-    protected int offsetX = 0;
-    protected int offsetY = 640;
-    protected int width = 64;
-    protected int height = 64;
+    protected int count;
+    protected int columns;
+    protected int offsetX;
+    protected int offsetY;
+    protected int width;
+    protected int height;
+
     protected boolean tele;
     protected SpriteAnimation animation;
     protected Image player;
 
     //character
     protected int character;
+
+    //level
+    protected int level;
+
+    //neu khong phai la character 0
+    //skin
+    int offsetUp, offsetDown, offsetLeft, offsetRight;
 
     //Attack Timer
     protected long lastAttackTimer, attackCoolDown = Configs.PLAYER_SWORD_COOL_DOWN, attackTimer = attackCoolDown;
@@ -51,14 +61,26 @@ public class Player extends Creature {
     private long ex;
 
     //skill
+    private int countSkill;
     SkillManager skillManager;
 
+    //constructor khi khong dung skin
     public Player(Handler handler, double x, double y, int damage) {
         super(handler, Assets.player, x, y, Configs.DEFAULT_CREATURE_WIDTH, Configs.DEFAULT_CREATURE_HEIGHT, damage);
 
-        //set speed
-        setSpeed(Configs.PLAYER_SPEED);
+        count = 9;
+        columns = 9;
+        offsetX = 0;
+        offsetY = 640;
+        width = 64;
+        height = 64;
 
+        this.offsetUp = 512;
+        this.offsetDown = 640;
+        this.offsetLeft = 576;
+        this.offsetRight = 704;
+
+        //character 0
         //animation moving
         imageView = new ImageView(image);
         imageView.setFitWidth(width);
@@ -78,6 +100,50 @@ public class Player extends Creature {
         abound.setY(16);
         abound.setWidth(32);
         abound.setHeight(48);
+        //character 0
+        character = 0;
+
+        init();
+    }
+
+    // neu dung skin thi su dung constructor nay
+    public Player(Handler handler, Image image, double x, double y, int offsetX, int offsetY,
+                  int offsetUp, int offsetDown, int offsetLeft, int offsetRight, int damage){
+        super(handler, image, x, y, 64, 96, damage);
+
+        count = 3;
+        columns = 3;
+        width = 44;
+        height = 66;
+
+        this.offsetUp = offsetUp;
+        this.offsetDown = offsetDown;
+        this.offsetLeft = offsetLeft;
+        this.offsetRight = offsetRight;
+
+        setSpeed(Configs.PLAYER_SPEED);
+        imageView = new ImageView(image);
+        imageView.setFitWidth(width);
+        imageView.setFitHeight(height);
+        imageView.setViewport(new Rectangle2D(offsetX,offsetY,width,height));
+        animation = new SpriteAnimation(imageView, Duration.millis(1000),count,columns,offsetX,offsetY,width,height);
+
+        bounds.setX(16);
+        bounds.setY(36);
+        bounds.setWidth(16);
+        bounds.setHeight(28);
+
+        abound = new Rectangle();
+        abound.setX(10);
+        abound.setY(11);
+        abound.setWidth(24);
+        abound.setHeight(53);
+
+        character = 1;
+        init();
+    }
+
+    public void init(){
 
         // foot sound
         footstep = Sound.footstep;
@@ -85,18 +151,34 @@ public class Player extends Creature {
 
         inventory = new Inventory(handler);
 
+        //load saved game
+        SaveDataGame saveDataGame = StartApp.getSaveData().savedGame.get(handler.getGameManager().getSaved());
+
+        //set speed
+        setSpeed(saveDataGame.getSpeed());
         //set health
-        maxHealth = Configs.PLAYER_HEALTH;
-        health = 1000;
-
-        speed = 10;
-        defence = 10;
-
+        maxHealth = saveDataGame.getMaxHealth();
+        health = saveDataGame.getHealth();
+        //set defence
+        defence = saveDataGame.getDefence();
         //ex
-        ex =0;
-        maxEx = 100;
+        ex = saveDataGame.getEx();
+        maxEx = saveDataGame.getMaxEx();
+        //damage
+        damage = saveDataGame.getDamage();
+        //level
+        level = saveDataGame.getLevel();
+        //ap
+//        ap = saveDataGame.getAp();
+        //skill
+//        countSkill = saveDataGame.getCount();
+//        for(int i = 1; i< countSkill; i++){
+//            skillManager.addSkill(saveDataGame.getSkills()[i]);
+//        }
+
 
         //test
+        level = 1;
         speed = 20;
         setDamage(1000);
         health = 1000;
@@ -109,9 +191,13 @@ public class Player extends Creature {
         //skill
         skillManager = new SkillManager(handler, this);
         skillManager.addSkill(2);
-        handler.getGameController().getSkill1().setImage(Assets.fireBallSkill);
+
         skillManager.addSkill(3);
-        handler.getGameController().getSkill2().setImage(Assets.swordSkill);
+
+        skillManager.addSkill(2);
+
+        skillManager.addSkill(2);
+
     }
 
     public void useSkill(){
@@ -137,8 +223,6 @@ public class Player extends Creature {
             }
         }
 
-
-
     }
 
     public void showProperty(){
@@ -160,12 +244,12 @@ public class Player extends Creature {
             handler.getGameController().getHpBar().setProgress(health/(double)maxHealth);
         }
 
-        if(ex/maxEx <= 0){
+        if(ex/(float)maxEx <= 0){
             handler.getGameController().getExBar().setProgress(0);
-        }else if(ex/maxEx >= 1){
+        }else if(ex/(float)maxEx >= 1){
             handler.getGameController().getExBar().setProgress(1);
         }else{
-            handler.getGameController().getExBar().setProgress(ex/maxEx);
+            handler.getGameController().getExBar().setProgress(ex/(float)maxEx);
         }
     }
 
@@ -176,7 +260,8 @@ public class Player extends Creature {
         getInput();
         move();
         checkPointMove();
-//        stepSound();
+
+        //center
         handler.getGameCamera().centerOnEntity(this);
 
         //Attack
@@ -187,7 +272,8 @@ public class Player extends Creature {
         //inventory
         inventory.tick();
 
-
+        //test
+        skillManager.showCountDown();
     }
 
     //CHECKPOINT
@@ -344,26 +430,26 @@ public class Player extends Creature {
         if(handler.getKeyManager().isMoveUp()){
             direction = 1;
             yMove = -speed;
-            animation.setOffsetY(512);
+            animation.setOffsetY(offsetUp);
 
         }
 
         if(handler.getKeyManager().isMoveDown()){
             direction = 2;
             yMove = speed;
-            animation.setOffsetY(640);
+            animation.setOffsetY(offsetDown);
         }
 
         if(handler.getKeyManager().isMoveLeft()){
             direction = 3;
             xMove = -speed;
-            animation.setOffsetY(576);
+            animation.setOffsetY(offsetLeft);
         }
 
         if(handler.getKeyManager().isMoveRight()){
             direction = 4;
             xMove = speed;
-            animation.setOffsetY(704);
+            animation.setOffsetY(offsetRight);
         }
     }
 
@@ -404,6 +490,7 @@ public class Player extends Creature {
 
         //Sound off
         handler.getSoundManager().soundOff();
+        handler.getGameManager().getHandlerApp().getGameOverScene().playSound();
 
         //chuyen canh
         handler.getGameManager().getMyTimer().stop();
@@ -418,6 +505,26 @@ public class Player extends Creature {
     public Rectangle getAttackBounds(double xOffset, double yOffset){
         return new Rectangle((int) (x + abound.getX() + xOffset),
                 (int) (y + abound.getY() + yOffset), abound.getWidth(), abound.getHeight());
+    }
+
+    //tang kinh nghiem
+    public void addExpe(int e){
+        if(ex + e < maxEx) {
+            this.ex += e;
+        }else{
+            ex = ex + e - maxEx;
+            maxEx = maxEx + level * 50;
+            level ++;
+            maxHealth += 50;
+            health = maxHealth;
+            damage += 5;
+            defence += 5;
+            ap += 5;
+            speed += 0.5;
+            showProperty();
+        }
+        showHPEX();
+
     }
 
     //getter and setter

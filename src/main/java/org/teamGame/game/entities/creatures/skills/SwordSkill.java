@@ -11,23 +11,31 @@ import org.teamGame.sounds.SoundPlayer;
 
 public class SwordSkill extends Skill{
 
-    public static long lastCutTimer, cutCoolDown = Configs.PLAYER_SWORD_COOL_DOWN, cutTimer = cutCoolDown;
 
-    public SwordSkill(Handler handler, int i, Enemy enemy) {
-        super(handler, i, enemy);
+    public SwordSkill(Handler handler, int i, Enemy enemy, int order) {
+        super(handler, i, enemy, order);
+
+        countDown = 500;
+        timer = countDown;
     }
 
-    public SwordSkill(Handler handler, int i, Player player) {
-        super(handler, i, player);
+    public SwordSkill(Handler handler, int i, Player player, int order) {
+        super(handler, i, player, order);
+
+        countDown = 500;
+        timer = countDown;
     }
 
     @Override
     public void attack() {
-        cutTimer += System.currentTimeMillis() - lastCutTimer;
-        lastCutTimer = System.currentTimeMillis();
-        if(cutTimer < cutCoolDown){
+        if(used && isPlayer == 1){
             return;
+        }
 
+        timer += System.currentTimeMillis() - lastTimer;
+        lastTimer = System.currentTimeMillis();
+        if(timer < countDown){
+            return;
         }
 //        if(handler.getKeyManager().isSpace()){
             if(player.getDirection() ==1) {
@@ -48,6 +56,6 @@ public class SwordSkill extends Skill{
 //            return;
 //        }
 
-        cutTimer = 0;
+        timer = 0;
     }
 }

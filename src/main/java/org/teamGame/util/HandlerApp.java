@@ -4,10 +4,8 @@ import javafx.stage.Stage;
 import org.teamGame.StartApp;
 import org.teamGame.controller.GameController;
 import org.teamGame.game.GameManager;
-import org.teamGame.scene.CreditScene;
-import org.teamGame.scene.GameOverScene;
-import org.teamGame.scene.GameScene;
-import org.teamGame.scene.VictoryScene;
+import org.teamGame.scene.*;
+import org.teamGame.sounds.SoundManager;
 
 public class HandlerApp {
     //app
@@ -15,9 +13,12 @@ public class HandlerApp {
 
     //scene
     GameScene gameScene;
+    StartScene startScene;
     VictoryScene victoryScene;
     GameOverScene gameOverScene;
     CreditScene creditScene;
+    LoadScene loadScene;
+    DifficultyScene difficultyScene;
 
     //Game manager
     GameManager gameManager;
@@ -88,5 +89,29 @@ public class HandlerApp {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public SoundManager getSoundManager(){
+        return this.app.getSoundManager();
+    }
+
+    public LoadScene getLoadScene() {
+        return loadScene;
+    }
+
+    public void setLoadScene(LoadScene loadScene) {
+        this.loadScene = loadScene;
+    }
+
+    public DifficultyScene getDifficultyScene() {
+        return difficultyScene;
+    }
+
+    public void setDifficultyScene(DifficultyScene difficultyScene) {
+        this.difficultyScene = difficultyScene;
+    }
+
+    public StartScene getStartScene() {
+        return this.app.getStartScene();
     }
 }

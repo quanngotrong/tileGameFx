@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="container" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/GameScene.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
@@ -34,11 +35,50 @@
                   <ImageView fx:id="skill4" fitHeight="56.0" fitWidth="62.0" layoutX="203.0" pickOnBounds="true" preserveRatio="true" styleClass="skillView" />
                   <Text fx:id="exShow" layoutX="91.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="95.7294921875" />
                   <Text fx:id="hpShow" layoutX="91.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="95.7294921875" />
-                  <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q" />
-                  <Text layoutX="77.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E" />
-                  <Text layoutX="140.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R" />
-                  <Text layoutX="203.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Space" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="56.0" layoutX="14.0" opacity="0.36" stroke="BLACK" strokeType="INSIDE" width="56.0" />
+                  <Rectangle fx:id="coverRec1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="56.0" layoutX="14.0" opacity="0.36" stroke="BLACK" strokeType="INSIDE" visible="false" width="56.0" />
+                  <Rectangle fx:id="coverRec2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="56.0" layoutX="76.0" opacity="0.36" stroke="BLACK" strokeType="INSIDE" visible="false" width="56.0" />
+                  <Rectangle fx:id="coverRec3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="56.0" layoutX="141.0" opacity="0.36" stroke="BLACK" strokeType="INSIDE" visible="false" width="56.0" />
+                  <Rectangle fx:id="coverRec4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="56.0" layoutX="203.0" opacity="0.36" stroke="BLACK" strokeType="INSIDE" visible="false" width="56.0" />
+                  <Text fx:id="countDown1" fill="#e1c10b" layoutX="22.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="39.61572265625">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="countDown2" fill="#e1c10b" layoutX="84.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="39.61572265625">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="countDown3" fill="#e1c10b" layoutX="148.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="39.61572265625">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="countDown4" fill="#e1c10b" layoutX="211.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="39.61572265625">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#97e412" layoutX="15.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#97e412" layoutX="79.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#97e412" layoutX="142.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#97e412" layoutX="196.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Space">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
             <GridPane fx:id="containter13">
