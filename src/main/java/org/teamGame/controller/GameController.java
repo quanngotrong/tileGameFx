@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -108,6 +109,9 @@ public class GameController implements FxController{
     private GridPane containter13;
 
     @FXML
+    private Button pause;
+
+    @FXML
     public void initialize(){
         // initialize the game
         // them gameScene de xu ly input
@@ -146,143 +150,79 @@ public class GameController implements FxController{
         return defence;
     }
 
-    public void setDefence(Text defence) {
-        this.defence = defence;
-    }
-
     public ProgressBar getHpBar() {
         return hpBar;
-    }
-
-    public void setHpBar(ProgressBar hpBar) {
-        this.hpBar = hpBar;
     }
 
     public ProgressBar getExBar() {
         return exBar;
     }
 
-    public void setExBar(ProgressBar exBar) {
-        this.exBar = exBar;
-    }
-
     public Text getExShow() {
         return exShow;
-    }
-
-    public void setExShow(Text exShow) {
-        this.exShow = exShow;
     }
 
     public Text getHpShow() {
         return hpShow;
     }
 
-    public void setHpShow(Text hpShow) {
-        this.hpShow = hpShow;
-    }
-
     public Text getAp() {
         return ap;
-    }
-
-    public void setAp(Text ap) {
-        this.ap = ap;
     }
 
     public ImageView getSkill1() {
         return skill1;
     }
 
-    public void setSkill1(ImageView skill1) {
-        this.skill1 = skill1;
-    }
-
     public ImageView getSkill2() {
         return skill2;
-    }
-
-    public void setSkill2(ImageView skill2) {
-        this.skill2 = skill2;
     }
 
     public ImageView getSkill3() {
         return skill3;
     }
 
-    public void setSkill3(ImageView skill3) {
-        this.skill3 = skill3;
-    }
-
     public ImageView getSkill4() {
         return skill4;
-    }
-
-    public void setSkill4(ImageView skill4) {
-        this.skill4 = skill4;
     }
 
     public Rectangle getCoverRec1() {
         return coverRec1;
     }
 
-    public void setCoverRec1(Rectangle coverRec1) {
-        this.coverRec1 = coverRec1;
-    }
-
     public Rectangle getCoverRec2() {
         return coverRec2;
-    }
-
-    public void setCoverRec2(Rectangle coverRec2) {
-        this.coverRec2 = coverRec2;
     }
 
     public Rectangle getCoverRec3() {
         return coverRec3;
     }
 
-    public void setCoverRec3(Rectangle coverRec3) {
-        this.coverRec3 = coverRec3;
-    }
-
     public Rectangle getCoverRec4() {
         return coverRec4;
-    }
-
-    public void setCoverRec4(Rectangle coverRec4) {
-        this.coverRec4 = coverRec4;
     }
 
     public Text getCountDown1() {
         return countDown1;
     }
 
-    public void setCountDown1(Text countDown1) {
-        this.countDown1 = countDown1;
-    }
-
     public Text getCountDown2() {
         return countDown2;
-    }
-
-    public void setCountDown2(Text countDown2) {
-        this.countDown2 = countDown2;
     }
 
     public Text getCountDown3() {
         return countDown3;
     }
 
-    public void setCountDown3(Text countDown3) {
-        this.countDown3 = countDown3;
-    }
-
     public Text getCountDown4() {
         return countDown4;
     }
 
-    public void setCountDown4(Text countDown4) {
-        this.countDown4 = countDown4;
+    public GridPane getContainter13() {
+        return containter13;
+    }
+
+    public Button getPause() {
+        return pause;
     }
 }

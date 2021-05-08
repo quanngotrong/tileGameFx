@@ -5,6 +5,7 @@ import org.teamGame.game.Handler;
 import org.teamGame.game.entities.creatures.Player;
 import org.teamGame.game.entities.creatures.bossSkill.energyBall;
 import org.teamGame.game.entities.creatures.weapons.Bullet;
+import org.teamGame.game.entities.creatures.weapons.FireRing;
 import org.teamGame.game.entities.creatures.weapons.Sword;
 
 import java.util.ArrayList;
@@ -18,10 +19,11 @@ public class EntityManager {
     private ArrayList<Bullet> bullets;
     private ArrayList<Sword> swords;
     private ArrayList<Entity> temp;
+    private ArrayList<FireRing> fireRings;
 
     private ArrayList<energyBall> fire;
 
-    private Iterator i, j, t, eb;
+    private Iterator i, j, t, eb, fr;
 
     private Comparator<Entity> renderSort = Comparator.comparingDouble(a -> a.getY() + a.getHeight());
 
@@ -33,6 +35,7 @@ public class EntityManager {
         swords = new ArrayList<>();
         fire = new ArrayList<>();
         temp = new ArrayList<>();
+        fireRings = new ArrayList<>();
         addEntity(player);
     }
 
@@ -76,6 +79,15 @@ public class EntityManager {
                 eb.remove();
             }
         }
+
+        fr = fireRings.iterator();
+        while(fr.hasNext()){
+            FireRing fireRing = (FireRing) fr.next();
+            fireRing.tick();
+            if(!fireRing.isActive()){
+                fr.remove();
+            }
+        }
     }
 
     public void render(GraphicsContext g){
@@ -92,11 +104,16 @@ public class EntityManager {
         for(energyBall eb : fire){
             eb.render(g);
         }
+        for(FireRing fr : fireRings){
+            fr.render(g);
+        }
         player.postRender(g);
 
     }
 
-
+    public void addFireRing(FireRing fr){
+        fireRings.add(fr);
+    }
     public void addEntity(Entity e){
         temp.add(e);
     }

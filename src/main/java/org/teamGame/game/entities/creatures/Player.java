@@ -61,7 +61,7 @@ public class Player extends Creature {
     private long ex;
 
     //skill
-    private int countSkill;
+    private int countSkill =0;
     SkillManager skillManager;
 
     //constructor khi khong dung skin
@@ -178,11 +178,11 @@ public class Player extends Creature {
 
 
         //test
-        level = 1;
-        speed = 20;
-        setDamage(1000);
-        health = 1000;
-        maxHealth = 1000;
+//        level = 1;
+//        speed = 20;
+//        setDamage(1000);
+//        health = 1000;
+//        maxHealth = 1000;
 
         //show the property
         showProperty();
@@ -191,11 +191,11 @@ public class Player extends Creature {
         //skill
         skillManager = new SkillManager(handler, this);
         skillManager.addSkill(2);
-
+        countSkill ++;
         skillManager.addSkill(3);
-
+        countSkill ++;
         skillManager.addSkill(2);
-
+        countSkill ++;
         skillManager.addSkill(2);
 
     }
@@ -552,5 +552,45 @@ public class Player extends Creature {
         this.inventory = inventory;
     }
 
-    
+    public long getMaxEx() {
+        return maxEx;
+    }
+
+    public void setMaxEx(long maxEx) {
+        this.maxEx = maxEx;
+    }
+
+    public long getEx() {
+        return ex;
+    }
+
+    public void setEx(long ex) {
+        this.ex = ex;
+    }
+
+    public int getCountSkill() {
+        return countSkill;
+    }
+
+    public void setCountSkill(int countSkill) {
+        this.countSkill = countSkill;
+    }
+
+    public SkillManager getSkillManager() {
+        return skillManager;
+    }
+
+    public void setSkillManager(SkillManager skillManager) {
+        this.skillManager = skillManager;
+
+
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
 }

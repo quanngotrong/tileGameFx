@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import org.teamGame.StartApp;
 import org.teamGame.scene.GameScene;
 import org.teamGame.util.HandlerApp;
+import org.teamGame.util.Utils;
 
 public class LoadController implements FxController{
 
@@ -219,6 +220,14 @@ public class LoadController implements FxController{
             }
         });
 
+        this.delete.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                StartApp.getSaveData().savedGame.remove(choseData);
+                handlerApp.getLoadScene().refreshLoadScene();
+                Utils.saveData(StartApp.getSaveData());
+            }
+        });
 
     }
 

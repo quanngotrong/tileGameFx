@@ -74,7 +74,7 @@ public abstract class Enemy extends Creature{
         }
     }
 
-    protected boolean checkPlayerZone() {
+    public boolean checkPlayerZone() {
         enemyX = getCollisionBounds(0,0).getX();
         enemyY = getCollisionBounds(0,0).getY();
         playerX = handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0).getX();

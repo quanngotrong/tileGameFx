@@ -133,4 +133,12 @@ public abstract class Entity {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
 }

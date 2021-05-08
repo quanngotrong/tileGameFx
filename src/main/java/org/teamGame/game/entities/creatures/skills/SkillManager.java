@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView;
 import org.teamGame.game.Handler;
 import org.teamGame.game.entities.creatures.Enemy;
 import org.teamGame.game.entities.creatures.Player;
+import org.teamGame.game.entities.creatures.bossSkill.FireRingSkill;
 import org.teamGame.game.gfx.Assets;
 
 import java.util.ArrayList;
@@ -101,6 +102,9 @@ public class SkillManager {
                         case 3:
                             skillArray.add(new SwordSkill(handler, isPlayer, enemy, i));
                             break;
+                        case 4:
+                            skillArray.add(new FireRingSkill(handler, isPlayer, enemy, i));
+                            break;
                     }
                     break;
                 }
@@ -139,6 +143,9 @@ public class SkillManager {
                         case 3:
                             skillArray.add(new SwordSkill(handler, isPlayer, player, i));
                             imageView.setImage(Assets.swordSkill);
+                            break;
+                        case 4:
+                            skillArray.add(new FireRingSkill(handler, isPlayer, player, i));
                             break;
                     }
                     break;

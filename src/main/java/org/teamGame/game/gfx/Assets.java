@@ -23,6 +23,7 @@ public class Assets {
     //boss
     public static Image bossblue;
     public static Image firebreath;
+    public static Image fireRing;
     public static Image energyBall;
     public static Image energyBall1;
     public static Image energyBall2;
@@ -68,6 +69,7 @@ public class Assets {
         bossblue = ImageLoader.loadImage("/textures/bossblue.png");
         firebreath = ImageLoader.loadImage("/textures/boss/fireball3.png");
         energyBall = ImageLoader.loadImage("/textures/boss/energyBall.png");
+        fireRing = ImageLoader.loadImage("/textures/boss/fireRing.png");
         SpriteSheet e = new SpriteSheet(energyBall);
         energyBall1 = e.crop(0,0,182,206);
         energyBall2 = e.crop(182 * 1,0,182,206);
@@ -201,15 +203,15 @@ public class Assets {
         SpriteSheet maleSheet = new SpriteSheet(ImageLoader.loadImage("/textures/male_npcs.png"));
         SpriteSheet childrenSheet = new SpriteSheet(ImageLoader.loadImage("/textures/children_npcs.png"));
         character0 = playerSheet.crop(0, 64 * 2, 64, 64);
-        character1 = maleSheet.crop(80, 480, 80, 120);//Monk
-        character2 = femaleSheet.crop(80, 0, 80, 120);//jill
-        character3 = maleSheet.crop(80, 0 , 80, 120); //jack
-        character4 = maleSheet.crop( 560, 0, 80, 120); //guard
-        character5 = childrenSheet.crop(80,0, 80, 120); //green hair
-        character6 = femaleSheet.crop(320, 0, 80, 120); //grandma
-        character7 = femaleSheet.crop(560, 0, 80, 120); // female guard
-        character8 = maleSheet.crop(320, 0, 80, 120); //farmer
-        character9 = childrenSheet.crop(560, 0, 80, 120); //blue hat
+        character1 = maleSheet.crop(80 - 10, 480 + 10, 100, 100);//Monk
+        character2 = femaleSheet.crop(80 - 10, 10, 100, 100);//jill
+        character3 = maleSheet.crop(80 - 10, 10 , 80, 120); //jack
+        character4 = maleSheet.crop( 560 -10, 10, 80, 120); //guard
+        character5 = childrenSheet.crop(80 - 10,10, 80, 120); //green hair
+        character6 = femaleSheet.crop(320 - 10, 10, 80, 120); //grandma
+        character7 = femaleSheet.crop(560 - 10, 10, 80, 120); // female guard
+        character8 = maleSheet.crop(320 - 10, 10, 80, 120); //farmer
+        character9 = childrenSheet.crop(560 -10, 10, 80, 120); //blue hat
 
         lock = ImageLoader.loadImage("/css/image/lock.jpg");
     }

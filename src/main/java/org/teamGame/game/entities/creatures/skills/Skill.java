@@ -12,34 +12,34 @@ public abstract class Skill {
 
     //master = 0 => player
     //master = 1 => enemy
-    private int master;
+    protected int master;
 
     //countdown
-    public long countDown, timer, lastTimer;
+    protected long countDown, timer, lastTimer;
 
     //position in skill show
-    public int order;
+    protected int order;
 
     //used
     public boolean used;
     public int isPlayer;
 
     //master
-    Enemy enemy;
-    Player player;
+    protected Enemy enemy;
+    protected Player player;
 
-    public Skill(Handler handler, int i, Enemy enemy, int order){
+    public Skill(Handler handler, int isPlayer, Enemy enemy, int order){
         this.handler = handler;
         this.enemy = enemy;
-        this.isPlayer= i;
+        this.isPlayer= isPlayer;
         this.order = order;
     }
 
-    public Skill(Handler handler, int i, Player player, int order){
+    public Skill(Handler handler, int isPlayer, Player player, int order){
         this.handler = handler;
         this.player = player;
 
-        this.isPlayer = i;
+        this.isPlayer = isPlayer;
         this.order = order;
     }
 

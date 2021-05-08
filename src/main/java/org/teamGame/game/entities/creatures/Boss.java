@@ -9,6 +9,7 @@ import javafx.util.Duration;
 import org.teamGame.game.Handler;
 import org.teamGame.game.configs.Configs;
 import org.teamGame.game.entities.creatures.bossSkill.energyBall;
+import org.teamGame.game.entities.creatures.skills.SkillManager;
 import org.teamGame.game.gfx.Assets;
 import org.teamGame.game.gfx.SpriteAnimation;
 import org.teamGame.sounds.Sound;
@@ -19,8 +20,6 @@ public class Boss extends Enemy{
     int columns = 3;
     int offsetX = 0;
     int offsetY = 0;
-    int width = 144;
-    int height = 128;
 
     private boolean isAttack = false;
 
@@ -65,6 +64,9 @@ public class Boss extends Enemy{
         //range normal attack
         distanceA = 60 * 60 * 3 * 3;
         setDamage(50);
+
+        skillManager = new SkillManager(handler, this);
+        skillManager.addSkill(4);
     }
 
     @Override
@@ -83,6 +85,8 @@ public class Boss extends Enemy{
         checkAttacks();
         setAnimation();
         checkFire();
+
+        skillManager.checkAttackSkill1();
     }
 
     @Override
@@ -111,14 +115,14 @@ public class Boss extends Enemy{
     }
 
     @Override
-    protected boolean checkPlayerZone() {
+    public boolean checkPlayerZone() {
         enemyX = getCollisionBounds(0,0).getX();
         enemyY = getCollisionBounds(0,0).getY();
         playerX = handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0).getX();
         playerY = handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0).getY();
         distance = (enemyX - playerX)*(enemyX - playerX) + (enemyY - playerY)*(enemyY - playerY);
 
-        return distance < 500 * 500;
+        return distance < 1000 * 1000;
     }
 
     private void setAnimation(){
@@ -144,7 +148,7 @@ public class Boss extends Enemy{
 
         enemy = imageView.snapshot(params, null);
         g.drawImage(enemy, (int) (x - handler.getGameCamera().getxOffset()),
-                (int) (y - handler.getGameCamera().getyOffset()), width * 3, height * 3);
+                (int) (y - handler.getGameCamera().getyOffset()), width* 3 , height * 3);
 
         //draw health bar
         g.setFill(Color.BLACK);
@@ -217,7 +221,6 @@ public class Boss extends Enemy{
     public void die() {
         Configs.GOLD++;
         handler.getWorld().setEnemyOnBoard(handler.getWorld().getEnemyOnBoard() - 1);
-        System.out.println(Configs.GOLD);
         // System.out.println("xin lũiiii mà :(");
 
         //tat nhac

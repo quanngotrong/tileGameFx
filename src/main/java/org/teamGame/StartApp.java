@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.teamGame.game.gfx.Assets;
@@ -19,6 +20,9 @@ public class StartApp extends Application {
 
     //stage
     private Stage stage;
+
+    //setting stage
+    private Stage settingStage;
 
     //scene
     private StartScene startScene;
@@ -42,6 +46,11 @@ public class StartApp extends Application {
         startScene.playSound();
 
         scene = startScene.getScene();
+
+        //setting stage
+        settingStage = new Stage();
+        settingStage.setScene(new SettingScene(handlerApp).getScene());
+        settingStage.initModality(Modality.APPLICATION_MODAL);
 
         stage.setScene(scene);
         stage.show();
@@ -75,6 +84,7 @@ public class StartApp extends Application {
         gold = saveData.getGold();
 
         handlerApp.setLoadScene(new LoadScene(handlerApp));
+
 
     }
 
@@ -141,5 +151,13 @@ public class StartApp extends Application {
 
     public void setSoundManager(SoundManager soundManager) {
         this.soundManager = soundManager;
+    }
+
+    public Stage getSettingStage() {
+        return settingStage;
+    }
+
+    public void setSettingStage(Stage settingStage) {
+        this.settingStage = settingStage;
     }
 }

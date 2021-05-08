@@ -3,20 +3,30 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/LoadScene.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="returnB" layoutX="91.0" layoutY="537.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" text="return" />
       <Button fx:id="delete" layoutX="533.0" layoutY="546.0" mnemonicParsing="false" text="delete" visible="false" />
       <Button fx:id="Continue" layoutX="665.0" layoutY="546.0" mnemonicParsing="false" text="continue" visible="false" />
-      <ImageView fx:id="loadView1" fitHeight="150.0" fitWidth="200.0" layoutX="66.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
-      <ImageView fx:id="loadView2" fitHeight="150.0" fitWidth="200.0" layoutX="317.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
-      <ImageView fx:id="loadView3" fitHeight="150.0" fitWidth="200.0" layoutX="565.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
-      <ImageView fx:id="loadView4" fitHeight="150.0" fitWidth="200.0" layoutX="66.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
-      <ImageView fx:id="loadView5" fitHeight="150.0" fitWidth="200.0" layoutX="317.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
-      <ImageView fx:id="loadView6" fitHeight="150.0" fitWidth="200.0" layoutX="563.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
-      <ImageView fx:id="loadView7" fitHeight="150.0" fitWidth="200.0" layoutX="66.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
-      <ImageView fx:id="loadView8" fitHeight="150.0" fitWidth="200.0" layoutX="317.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
-      <ImageView fx:id="loadView9" fitHeight="150.0" fitWidth="200.0" layoutX="563.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9c98f" height="150.0" layoutX="95.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="150.0" layoutX="346.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#12385b" height="150.0" layoutX="592.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7cff1f" height="150.0" layoutX="95.0" layoutY="194.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#511fff" height="150.0" layoutX="346.0" layoutY="194.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#444c54" height="150.0" layoutX="594.0" layoutY="194.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7d8790" height="150.0" layoutX="95.0" layoutY="370.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b6cf1f" height="150.0" layoutX="346.0" layoutY="370.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d05a73" height="150.0" layoutX="594.0" layoutY="370.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+      <ImageView fx:id="loadView1" fitHeight="150.0" fitWidth="150.0" layoutX="93.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
+      <ImageView fx:id="loadView2" fitHeight="150.0" fitWidth="150.0" layoutX="344.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
+      <ImageView fx:id="loadView3" fitHeight="150.0" fitWidth="150.0" layoutX="592.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
+      <ImageView fx:id="loadView4" fitHeight="150.0" fitWidth="150.0" layoutX="93.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
+      <ImageView fx:id="loadView5" fitHeight="150.0" fitWidth="150.0" layoutX="344.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
+      <ImageView fx:id="loadView6" fitHeight="150.0" fitWidth="150.0" layoutX="590.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
+      <ImageView fx:id="loadView7" fitHeight="150.0" fitWidth="150.0" layoutX="93.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
+      <ImageView fx:id="loadView8" fitHeight="150.0" fitWidth="150.0" layoutX="344.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
+      <ImageView fx:id="loadView9" fitHeight="150.0" fitWidth="150.0" layoutX="590.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true" styleClass="savedView" />
    </children>
 </AnchorPane>

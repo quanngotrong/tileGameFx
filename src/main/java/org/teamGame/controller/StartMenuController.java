@@ -33,7 +33,17 @@ public class StartMenuController implements FxController {
     private Button exitButton;
 
     @FXML
+    private Button setting;
+
+    @FXML
     public void initialize(){
+        setting.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                handlerApp.getApp().getSettingStage().showAndWait();
+            }
+        });
+
 
         this.startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override

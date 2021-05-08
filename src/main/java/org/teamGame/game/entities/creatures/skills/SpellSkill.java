@@ -34,7 +34,7 @@ public class SpellSkill extends Skill{
             return;
         }
 
-        if(enemy.getDirection() < 300*300){
+        if(enemy.checkPlayerZone()){
             handler.getWorld().getEntityManager().addBullet(new Spell(handler, Assets.player_bullet,
                     enemy.getX()+20, enemy.getY()+30, enemy.getAp(), enemy.getDirection()));
             SoundPlayer.PlaySound(Sound.player_fired);

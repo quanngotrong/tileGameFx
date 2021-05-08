@@ -135,4 +135,6 @@ public abstract class Creature extends Entity {
     public void setAp(int ap) {
         this.ap = ap;
     }
+
+
 }

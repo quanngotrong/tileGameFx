@@ -46,6 +46,7 @@ public class GameState {
         handler.getSoundManager().addSound(stateSound);
         stateSound.setCycleCount(MediaPlayer.INDEFINITE);
 
+//        world[1].getEntityManager().addEntity(new Boss(handler, 200, 600));
         //create NPCs
         world[1].getEntityManager().addEntity(new Guard(handler, "Tao có súng\nđây nè...",300, 660));
         world[1].getEntityManager().addEntity(new Guard(handler, 170, 660));

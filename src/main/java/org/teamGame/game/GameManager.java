@@ -1,9 +1,13 @@
 package org.teamGame.game;
 
 import javafx.animation.AnimationTimer;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import org.teamGame.StartApp;
 import org.teamGame.controller.GameController;
 import org.teamGame.game.configs.Configs;
@@ -12,10 +16,13 @@ import org.teamGame.game.gfx.GameCamera;
 import org.teamGame.game.input.KeyManager;
 import org.teamGame.game.input.MouseManager;
 import org.teamGame.game.maps.Tile;
+import org.teamGame.scene.ResumeScene;
 import org.teamGame.sounds.SoundManager;
 import org.teamGame.game.state.GameState;
 import org.teamGame.scene.GameScene;
 import org.teamGame.util.HandlerApp;
+
+import javafx.stage.Stage;
 
 public class GameManager {
     //handler app
@@ -53,10 +60,14 @@ public class GameManager {
     //game state
     private GameState gameState;
 
+    //resume stage
+    private ResumeScene resumeScene;
+    private Stage resumeStage;
+
     //timer
     private AnimationTimer myTimer;
 
-    //saved
+    //location in saved data
     private int saved;
 
     /*
@@ -86,6 +97,19 @@ public class GameManager {
     public void start(){
         init();
         this.scene = handlerApp.getStage().getScene();
+
+        //create resume state
+        resumeStage = new Stage();
+        resumeScene = new ResumeScene(handlerApp, handler);
+        resumeStage.setScene(resumeScene.getScene());
+        resumeStage.initModality(Modality.APPLICATION_MODAL);
+
+        gameController.getPause().setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                resumeStage.showAndWait();
+            }
+        });
 
         //graphic
         g = canvas.getGraphicsContext2D();
@@ -298,5 +322,21 @@ public class GameManager {
 
     public void setSaved(int saved) {
         this.saved = saved;
+    }
+
+    public ResumeScene getResumeScene() {
+        return resumeScene;
+    }
+
+    public void setResumeScene(ResumeScene resumeScene) {
+        this.resumeScene = resumeScene;
+    }
+
+    public Stage getResumeStage() {
+        return resumeStage;
+    }
+
+    public void setResumeStage(Stage resumeStage) {
+        this.resumeStage = resumeStage;
     }
 }
