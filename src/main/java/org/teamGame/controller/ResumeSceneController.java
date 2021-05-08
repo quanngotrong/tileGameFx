@@ -86,10 +86,12 @@ public class ResumeSceneController implements FxController{
                 }
                 int saved = handler.getGameManager().getSaved();
                 if(saved == 0){
+
                     Player player = handler.getWorld().getEntityManager().getPlayer();
+
                     SaveDataGame saveDataGame= new SaveDataGame(1, player.getHealth(), player.getMaxHealth(),
                             (int)player.getEx(),(int) player.getMaxEx(), StartApp.getSaveData().savedGame.get(saved).getCharacter(),
-                            player.getDamage(),player.getDefence(), player.getSpeed(), player.getCountSkill(), player.getSkillManager().getSkills(),
+                            player.getDamage(),player.getDefence(), player.getSpeed(), player.getSkillManager().getCount(), player.getSkillManager().getSkills(),
                             StartApp.getSaveData().savedGame.get(saved).getDifficulty(), player.getLevel());
                     StartApp.getSaveData().savedGame.add(saveDataGame);
                     handler.getGameManager().setSaved(StartApp.getSaveData().savedGame.indexOf(saveDataGame)) ;
@@ -105,7 +107,7 @@ public class ResumeSceneController implements FxController{
                     saveDataGame.setDamage(player.getDamage());
                     saveDataGame.setDefence(player.getDefence());
                     saveDataGame.setSpeed(player.getSpeed());
-                    saveDataGame.setCount(player.getCountSkill());
+                    saveDataGame.setCount(player.getSkillManager().getCount());
                     saveDataGame.setSkills(player.getSkillManager().getSkills());
                     saveDataGame.setLevel(player.getLevel());
                 }

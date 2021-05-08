@@ -31,10 +31,6 @@ public class Inventory {
         this.handler = handler;
         inventoryItems = new ArrayList<Item>();
 
-        addItem(Item.lotionHP.createNew(1));
-        addItem(Item.lotionAttack.createNew(1));
-        addItem(Item.lotionMana.createNew(1));
-
     }
 
     public void tick(){
@@ -103,6 +99,9 @@ public class Inventory {
     //inventory methods
 
     public void addItem(Item item){
+        if(item.getCount() == 0){
+            return;
+        }
         for(Item i : inventoryItems){
             if(i.getId() == item.getId()){
                 i.setCount(i.getCount() + item.getCount());

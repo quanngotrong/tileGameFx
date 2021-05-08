@@ -17,6 +17,7 @@ import org.teamGame.game.entities.creatures.weapons.Sword;
 import org.teamGame.game.gfx.Assets;
 import org.teamGame.game.gfx.SpriteAnimation;
 import org.teamGame.game.inventory.Inventory;
+import org.teamGame.game.items.Item;
 import org.teamGame.game.state.GameState;
 import org.teamGame.save.SaveDataGame;
 import org.teamGame.sounds.Sound;
@@ -63,6 +64,9 @@ public class Player extends Creature {
     //skill
     private int countSkill =0;
     SkillManager skillManager;
+
+    //item
+    private int items[];
 
     //constructor khi khong dung skin
     public Player(Handler handler, double x, double y, int damage) {
@@ -149,7 +153,13 @@ public class Player extends Creature {
         footstep = Sound.footstep;
         handler.getSoundManager().addSound(footstep);
 
+        //item
         inventory = new Inventory(handler);
+        items = new int[]{0,0,0};
+
+        inventory.addItem(Item.lotionHP.createNew(items[0]));
+        inventory.addItem(Item.lotionAttack.createNew(items[1]));
+        inventory.addItem(Item.lotionMana.createNew(items[2]));
 
         //load saved game
         SaveDataGame saveDataGame = StartApp.getSaveData().savedGame.get(handler.getGameManager().getSaved());
@@ -171,10 +181,14 @@ public class Player extends Creature {
         //ap
 //        ap = saveDataGame.getAp();
         //skill
-//        countSkill = saveDataGame.getCount();
-//        for(int i = 1; i< countSkill; i++){
-//            skillManager.addSkill(saveDataGame.getSkills()[i]);
-//        }
+
+        skillManager = new SkillManager(handler, this);
+        countSkill = saveDataGame.getCount();
+        for(int i = 1; i<= countSkill; i++){
+            skillManager.addSkill(saveDataGame.getSkills()[i]);
+        }
+
+//        skillManager.addSkill(3);
 
 
         //test
@@ -189,14 +203,14 @@ public class Player extends Creature {
         showHPEX();
 
         //skill
-        skillManager = new SkillManager(handler, this);
-        skillManager.addSkill(2);
-        countSkill ++;
-        skillManager.addSkill(3);
-        countSkill ++;
-        skillManager.addSkill(2);
-        countSkill ++;
-        skillManager.addSkill(2);
+//
+//        skillManager.addSkill(2);
+//        countSkill ++;
+//        skillManager.addSkill(3);
+//        countSkill ++;
+//        skillManager.addSkill(2);
+//        countSkill ++;
+//        skillManager.addSkill(2);
 
     }
 

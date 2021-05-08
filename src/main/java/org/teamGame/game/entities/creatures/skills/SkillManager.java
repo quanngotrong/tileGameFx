@@ -86,6 +86,9 @@ public class SkillManager {
     skill 3: swordSkill
      */
     public void addSkill(int skill){
+        if(count == 4){
+            return;
+        }
         // neu khong la player
         if(isPlayer == 0) {
             for (int i = 1; i <= 4; i++) {
