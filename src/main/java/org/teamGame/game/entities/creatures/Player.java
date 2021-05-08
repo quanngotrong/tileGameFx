@@ -153,16 +153,19 @@ public class Player extends Creature {
         footstep = Sound.footstep;
         handler.getSoundManager().addSound(footstep);
 
-        //item
-        inventory = new Inventory(handler);
-        items = new int[]{0,0,0};
 
-        inventory.addItem(Item.lotionHP.createNew(items[0]));
-        inventory.addItem(Item.lotionAttack.createNew(items[1]));
-        inventory.addItem(Item.lotionMana.createNew(items[2]));
 
         //load saved game
         SaveDataGame saveDataGame = StartApp.getSaveData().savedGame.get(handler.getGameManager().getSaved());
+
+        //item
+        inventory = new Inventory(handler);
+        items = new int[3];
+        items = saveDataGame.getItems();
+        System.out.println(saveDataGame.getItems());
+        inventory.addItem(Item.lotionHP.createNew(items[0]));
+        inventory.addItem(Item.lotionAttack.createNew(items[1]));
+        inventory.addItem(Item.lotionMana.createNew(items[2]));
 
         //set speed
         setSpeed(saveDataGame.getSpeed());
@@ -606,5 +609,13 @@ public class Player extends Creature {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public int[] getItems() {
+        return items;
+    }
+
+    public void setItems(int[] items) {
+        this.items = items;
     }
 }

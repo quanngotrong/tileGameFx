@@ -10,7 +10,7 @@ public class Launcher {
 
 //            test va tao cac truong hop
 //            Test test = new Test();
-//            test.testLoad();
+//            test.testSave();
 
         }
 }

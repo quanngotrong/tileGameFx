@@ -12,8 +12,8 @@ public class SaveDataGame implements Serializable {
     private int maxHealth;
 
     //experience
-    private int ex;
-    private int maxEx;
+    private long ex;
+    private long maxEx;
 
     //character
     private int character;
@@ -33,8 +33,14 @@ public class SaveDataGame implements Serializable {
     //level
     private int level;
 
-    public SaveDataGame(int map, int health, int maxHealth, int ex, int maxEx, int character, int damage, int defence, double speed, int count, int[] skills,
-                        int difficulty, int level) {
+    //ap
+    private int ap;
+
+    //item
+    private int items[];
+
+    public SaveDataGame(int map, int health, int maxHealth, long ex, long maxEx, int character, int damage, int defence, double speed, int count, int[] skills,
+                        int difficulty, int level, int ap, int items[]) {
         this.map = map;
         this.health = health;
         this.maxHealth = maxHealth;
@@ -48,6 +54,9 @@ public class SaveDataGame implements Serializable {
         this.skills = skills;
         this.difficulty = difficulty;
         this.level = level;
+
+        this.ap = ap;
+        this.items = items;
     }
 
     public int getMap() {
@@ -74,19 +83,19 @@ public class SaveDataGame implements Serializable {
         this.maxHealth = maxHealth;
     }
 
-    public int getEx() {
+    public long getEx() {
         return ex;
     }
 
-    public void setEx(int ex) {
+    public void setEx(long ex) {
         this.ex = ex;
     }
 
-    public int getMaxEx() {
+    public long getMaxEx() {
         return maxEx;
     }
 
-    public void setMaxEx(int maxEx) {
+    public void setMaxEx(long maxEx) {
         this.maxEx = maxEx;
     }
 
@@ -152,5 +161,21 @@ public class SaveDataGame implements Serializable {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public int getAp() {
+        return ap;
+    }
+
+    public void setAp(int ap) {
+        this.ap = ap;
+    }
+
+    public int[] getItems() {
+        return items;
+    }
+
+    public void setItems(int[] items) {
+        this.items = items;
     }
 }

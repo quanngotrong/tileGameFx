@@ -8,6 +8,7 @@ import org.teamGame.StartApp;
 import org.teamGame.game.Handler;
 import org.teamGame.game.configs.Configs;
 import org.teamGame.game.entities.creatures.Player;
+import org.teamGame.game.items.Item;
 import org.teamGame.save.SaveDataGame;
 import org.teamGame.util.HandlerApp;
 import org.teamGame.util.Utils;
@@ -89,27 +90,38 @@ public class ResumeSceneController implements FxController{
 
                     Player player = handler.getWorld().getEntityManager().getPlayer();
 
+                    int[] items = new int[]{0,0,0};
+                    for(Item i : player.getInventory().getInventoryItems()){
+                        items[i.getId()] = i.getCount();
+                    }
+
                     SaveDataGame saveDataGame= new SaveDataGame(1, player.getHealth(), player.getMaxHealth(),
                             (int)player.getEx(),(int) player.getMaxEx(), StartApp.getSaveData().savedGame.get(saved).getCharacter(),
                             player.getDamage(),player.getDefence(), player.getSpeed(), player.getSkillManager().getCount(), player.getSkillManager().getSkills(),
-                            StartApp.getSaveData().savedGame.get(saved).getDifficulty(), player.getLevel());
+                            StartApp.getSaveData().savedGame.get(saved).getDifficulty(), player.getLevel(), player.getAp(), items);
                     StartApp.getSaveData().savedGame.add(saveDataGame);
                     handler.getGameManager().setSaved(StartApp.getSaveData().savedGame.indexOf(saveDataGame)) ;
                 }
                 else{
 
                     Player player = handler.getWorld().getEntityManager().getPlayer();
+                    int[] items = new int[]{0,0,0};
+                    for(Item i : player.getInventory().getInventoryItems()){
+                        items[i.getId()] = i.getCount();
+                    }
                     SaveDataGame saveDataGame = StartApp.getSaveData().savedGame.get(saved);
                     saveDataGame.setHealth(player.getHealth());
                     saveDataGame.setMaxHealth(player.getMaxHealth());
-                    saveDataGame.setEx((int)player.getEx());
-                    saveDataGame.setMaxEx((int)player.getMaxEx());
+                    saveDataGame.setEx(player.getEx());
+                    saveDataGame.setMaxEx(player.getMaxEx());
                     saveDataGame.setDamage(player.getDamage());
                     saveDataGame.setDefence(player.getDefence());
                     saveDataGame.setSpeed(player.getSpeed());
                     saveDataGame.setCount(player.getSkillManager().getCount());
                     saveDataGame.setSkills(player.getSkillManager().getSkills());
                     saveDataGame.setLevel(player.getLevel());
+                    saveDataGame.setAp(player.getAp());
+                    saveDataGame.setItems(items);
                 }
 
                 Utils.saveData(StartApp.getSaveData());

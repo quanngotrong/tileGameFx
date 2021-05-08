@@ -15,10 +15,14 @@ public class Test {
         saveData.setGold(1000);
         int skills[] = new int[5];
         skills[1] = 2;
+        int items[] = new int[3];
+        items[0] = 1;
+        items[1] = 3;
+        items[2] = 0;
         SaveDataGame saveDataGame = new SaveDataGame(1, 200, 200, 0, 50, 0,
-                25, 5, 7.0, 1, skills, 0, 1);
+                25, 5, 7.0, 1, skills, 0, 1, 10, items);
         SaveDataGame saveDataGame2 = new SaveDataGame(1, 200, 200, 0, 50, 1,
-                25, 5, 7.0, 1, skills, 0, 1);
+                25, 5, 7.0, 1, skills, 0, 1, 15, items);
         saveData.savedGame.add(saveDataGame);
         saveData.savedGame.add(saveDataGame2);
 

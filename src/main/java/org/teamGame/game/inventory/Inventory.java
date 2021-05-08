@@ -145,4 +145,12 @@ public class Inventory {
     public void changeActive() {
         this.active = !this.active;
     }
+
+    public ArrayList<Item> getInventoryItems() {
+        return inventoryItems;
+    }
+
+    public void setInventoryItems(ArrayList<Item> inventoryItems) {
+        this.inventoryItems = inventoryItems;
+    }
 }
