@@ -1,0 +1,23 @@
+AnchorPane{
+    -fx-background-image: url("image/settingBackground.jpg");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+#back{
+    -fx-background-image: url("image/back_button.png");
+    -fx-background-color: transparent;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+
+}
+
+#soundOn{
+
+}
+
+#soundOff{
+
+}
