@@ -12,6 +12,7 @@ Thêm tính năng
 + các level sau thì quái sẽ có thêm chưởng(hiện tại chỉ có 1)
 + game bắt đầu với 2 chưởng(chưa làm ra chưởng mới lên chưa add được)
 + có thể viết chưởng theo template của các chưởng trước
++ thêm phần mua nhân vật
 
 
 giải thích các thay đổi:
