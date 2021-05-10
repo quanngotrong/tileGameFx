@@ -67,6 +67,8 @@ public class Boss extends Enemy{
 
         skillManager = new SkillManager(handler, this);
         skillManager.addSkill(4);
+
+        this.gold = 2000;
     }
 
     @Override

@@ -46,6 +46,8 @@ public class Witch extends Enemy{
         bounds.setHeight(34);
 
         skillManager.addSkill(1);
+
+        this.gold = 100;
     }
 
     @Override

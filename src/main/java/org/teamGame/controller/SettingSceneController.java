@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import org.teamGame.game.configs.Configs;
 import org.teamGame.util.HandlerApp;
+import org.teamGame.util.Utils;
 
 public class SettingSceneController implements FxController{
 
@@ -24,6 +25,9 @@ public class SettingSceneController implements FxController{
 
     @FXML
     private Button back;
+
+    @FXML
+    private Button reset;
 
     @FXML
     public void initialize(){
@@ -51,6 +55,13 @@ public class SettingSceneController implements FxController{
             @Override
             public void handle(ActionEvent actionEvent) {
                 handlerApp.getApp().getSettingStage().close();
+            }
+        });
+
+        reset.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Utils.resetGame();
             }
         });
     }

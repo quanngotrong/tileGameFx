@@ -59,10 +59,35 @@ public class World {
         if(character == 0){
             entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY, Configs.PLAYER_SWORD_DAMAGE));
         }
-        else {
+        else if(character == 1){//monk
             entityManager = new EntityManager(handler, new Player(handler, Assets.male_npcs,
                     spawnX, spawnY, 0, 264, 462, 264, 330, 396, Configs.PLAYER_SWORD_DAMAGE));
+        }else if(character == 2){//jill
+            entityManager = new EntityManager(handler, new Player(handler, Assets.female_npcs,
+                    spawnX, spawnY,  0, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
+        }else if(character == 3){//jack
+            entityManager = new EntityManager(handler, new Player(handler, Assets.male_npcs,
+                    spawnX, spawnY,  0, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
+        }else if(character == 4){//guard
+            entityManager = new EntityManager(handler, new Player(handler, Assets.male_npcs,
+                    spawnX, spawnY,  264, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
+        }else if(character == 5){//greenhair
+            entityManager = new EntityManager(handler, new Player(handler, Assets.children_npcs,
+                    spawnX, spawnY, 0, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
+        }else if(character == 6){//grandma
+            entityManager = new EntityManager(handler, new Player(handler, Assets.female_npcs,
+                    spawnX, spawnY, 132, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
+        }else if(character == 7){//femaleguard
+            entityManager = new EntityManager(handler, new Player(handler, Assets.female_npcs,
+                    spawnX, spawnY, 264, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
+        }else if(character == 8){//farmer
+            entityManager = new EntityManager(handler, new Player(handler, Assets.male_npcs,
+                    spawnX, spawnY, 132, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
+        }else if(character == 9){//bluehat
+            entityManager = new EntityManager(handler, new Player(handler, Assets.children_npcs,
+                    spawnX, spawnY, 264, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
         }
+
         itemManager = new ItemManager(handler);
     }
 

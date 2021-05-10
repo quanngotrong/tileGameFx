@@ -43,7 +43,9 @@ public class Skeleton extends Enemy{
         bounds.setWidth(16);
         bounds.setHeight(24);
 
-        skillManager.addSkill(1);
+//        skillManager.addSkill(1);
+
+        this.gold = 50;
     }
 
 
@@ -53,7 +55,7 @@ public class Skeleton extends Enemy{
         super.tick();
         setAnimation();
 
-        skillManager.checkAttackSkill1();
+//        skillManager.checkAttackSkill1();
     }
 
     private void setAnimation(){

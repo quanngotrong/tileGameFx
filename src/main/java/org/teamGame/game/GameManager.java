@@ -98,6 +98,8 @@ public class GameManager {
         init();
         this.scene = handlerApp.getStage().getScene();
 
+//        StartApp.getSaveData().savedGame.get(0).setCharacter(4);
+
         //create resume state
         resumeStage = new Stage();
         resumeScene = new ResumeScene(handlerApp, handler);

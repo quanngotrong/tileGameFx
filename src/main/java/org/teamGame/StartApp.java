@@ -75,12 +75,15 @@ public class StartApp extends Application {
         handlerApp = new HandlerApp(this);
         Assets.init();
 
+        saveData = Utils.loadData();
+
         handlerApp.setCreditScene(new CreditScene(handlerApp));
         handlerApp.setVictoryScene(new VictoryScene(handlerApp));
         handlerApp.setGameOverScene(new GameOverScene(handlerApp));
         handlerApp.setDifficultyScene(new DifficultyScene(handlerApp));
+        handlerApp.setChooseCharacterScene(new ChooseCharacterScene(handlerApp));
 
-        saveData = Utils.loadData();
+
         gold = saveData.getGold();
 
         handlerApp.setLoadScene(new LoadScene(handlerApp));

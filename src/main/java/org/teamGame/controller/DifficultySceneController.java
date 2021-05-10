@@ -86,7 +86,7 @@ public class DifficultySceneController implements FxController {
         this.backB.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                handlerApp.getStage().setScene(handlerApp.getApp().getStartScene().getScene());
+                handlerApp.getStage().setScene(handlerApp.getChooseCharacterScene().getScene());
             }
         });
 

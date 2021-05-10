@@ -312,7 +312,7 @@ public class Player extends Creature {
             damage = damage - defence;
         }
         this.health -= damage;
-        if(this.health < 0){
+        if(this.health <= 0){
             die();
         }
 

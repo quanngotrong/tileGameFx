@@ -37,7 +37,9 @@ public class StartMenuController implements FxController {
 
     @FXML
     public void initialize(){
-        setting.setOnAction(new EventHandler<ActionEvent>() {
+
+
+        this.setting.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 handlerApp.getApp().getSettingStage().showAndWait();
@@ -48,7 +50,8 @@ public class StartMenuController implements FxController {
         this.startButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                handlerApp.getStage().setScene(handlerApp.getDifficultyScene().getScene());
+                handlerApp.getChooseCharacterScene().getChooseCharacterController().setGold(StartApp.getSaveData().getGold());
+                handlerApp.getStage().setScene(handlerApp.getChooseCharacterScene().getScene());
             }
         });
 

@@ -9,10 +9,13 @@ public class SaveData implements Serializable {
 
     private long gold;
 
+    private boolean availCharacter[];
+
     public ArrayList<SaveDataGame> savedGame;
 
     public SaveData(){
         savedGame = new ArrayList<SaveDataGame>();
+        availCharacter = new boolean[10];
     }
 
     public long getGold() {
@@ -21,5 +24,13 @@ public class SaveData implements Serializable {
 
     public void setGold(long gold) {
         this.gold = gold;
+    }
+
+    public boolean[] getAvailCharacter() {
+        return availCharacter;
+    }
+
+    public void setAvailCharacter(boolean[] availCharacter) {
+        this.availCharacter = availCharacter;
     }
 }

@@ -2,6 +2,7 @@ package org.teamGame.util;
 
 import javafx.stage.Stage;
 import org.teamGame.StartApp;
+import org.teamGame.controller.ChooseCharacterController;
 import org.teamGame.controller.GameController;
 import org.teamGame.game.GameManager;
 import org.teamGame.scene.*;
@@ -12,13 +13,16 @@ public class HandlerApp {
     StartApp app;
 
     //scene
-    GameScene gameScene;
-    StartScene startScene;
-    VictoryScene victoryScene;
-    GameOverScene gameOverScene;
-    CreditScene creditScene;
-    LoadScene loadScene;
-    DifficultyScene difficultyScene;
+    private GameScene gameScene;
+    private StartScene startScene;
+    private VictoryScene victoryScene;
+    private GameOverScene gameOverScene;
+    private CreditScene creditScene;
+    private LoadScene loadScene;
+    private DifficultyScene difficultyScene;
+    private ChooseCharacterScene chooseCharacterScene;
+
+
 
     //Game manager
     GameManager gameManager;
@@ -113,5 +117,13 @@ public class HandlerApp {
 
     public StartScene getStartScene() {
         return this.app.getStartScene();
+    }
+
+    public ChooseCharacterScene getChooseCharacterScene() {
+        return chooseCharacterScene;
+    }
+
+    public void setChooseCharacterScene(ChooseCharacterScene chooseCharacterScene) {
+        this.chooseCharacterScene = chooseCharacterScene;
     }
 }

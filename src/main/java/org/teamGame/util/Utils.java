@@ -58,7 +58,7 @@ public class Utils {
     //save data
     public static void saveData(SaveData saveData){
         try{
-            ResourceManager.save(StartApp.getSaveData(), "src/main/resources/SavedData/savedData.save");
+            ResourceManager.save(saveData, "src/main/resources/SavedData/savedData.save");
         }
         catch (Exception e){
             System.out.println("Couldn't save: " + e.getMessage());
@@ -95,5 +95,29 @@ public class Utils {
             return Assets.character9;
         }
         return Assets.character0;
+    }
+
+    //reset game
+    public static void resetGame(){
+        SaveData save = new SaveData();
+        save.setGold(500);
+        int skills[] = new int[5];
+        skills[1] = 2;
+        skills[2] = 3;
+        int items[] = new int[3];
+        items[0] = 1;
+        items[1] = 1;
+        items[2] = 1;
+
+        boolean[] characters = new boolean[]{true, true, true, false, false, false ,false ,false ,false, false};
+        SaveDataGame saveDataGame = new SaveDataGame(1, 500, 500, 0, 50, 0,
+                50, 5, 8.0, 2, skills, 0, 1, 10, items);
+        save.setAvailCharacter(characters);
+
+        save.savedGame.add(saveDataGame);
+
+        StartApp.setSaveData(save);
+
+        Utils.saveData(StartApp.getSaveData());
     }
 }

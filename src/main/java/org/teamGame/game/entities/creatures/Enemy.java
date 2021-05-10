@@ -26,7 +26,7 @@ public abstract class Enemy extends Creature{
     private int ex;
 
     //gold
-    private int gold;
+    protected int gold;
 
     //skill manager
     SkillManager skillManager;
@@ -180,7 +180,7 @@ public abstract class Enemy extends Creature{
 
         handler.getWorld().getEntityManager().getPlayer().addExpe(ex);
 
-        StartApp.gold += gold;
+        StartApp.getSaveData().setGold(StartApp.getSaveData().getGold()+gold);
 
         active = false;
     }

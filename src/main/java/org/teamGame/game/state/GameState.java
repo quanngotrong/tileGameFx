@@ -116,6 +116,6 @@ public class GameState {
         g.fillRect(Configs.STAGE_WIDTH - 200, 0, 200, 30);
         g.setFill(Color.BLACK);
 //        g.fillText("Điểm số: " + Settings.SCORES, Settings.STAGE_WIDTH - 190, 22);
-        g.fillText("Gold: " + StartApp.getGold(), Configs.STAGE_WIDTH - 190, 22);
+        g.fillText("Gold: " + StartApp.getSaveData().getGold(), Configs.STAGE_WIDTH - 190, 22);
     }
 }

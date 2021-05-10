@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import org.teamGame.StartApp;
 import org.teamGame.scene.GameScene;
 import org.teamGame.util.HandlerApp;
@@ -61,6 +63,33 @@ public class LoadController implements FxController{
     public ImageView loadView9;
 
     @FXML
+    private Rectangle rec1;
+
+    @FXML
+    private Rectangle rec2;
+
+    @FXML
+    private Rectangle rec3;
+
+    @FXML
+    private Rectangle rec4;
+
+    @FXML
+    private Rectangle rec5;
+
+    @FXML
+    private Rectangle rec6;
+
+    @FXML
+    private Rectangle rec7;
+
+    @FXML
+    private Rectangle rec8;
+
+    @FXML
+    private Rectangle rec9;
+
+    @FXML
     public void initialize(){
         this.returnB.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -76,11 +105,14 @@ public class LoadController implements FxController{
                     delete.setVisible(true);
                     Continue.setVisible(true);
                     choseData = 1;
+
                 }else{
                     delete.setVisible(false);
                     Continue.setVisible(false);
                     choseData = 0;
+
                 }
+
             }
         });
 
@@ -226,6 +258,9 @@ public class LoadController implements FxController{
                 StartApp.getSaveData().savedGame.remove(choseData);
                 handlerApp.getLoadScene().refreshLoadScene();
                 Utils.saveData(StartApp.getSaveData());
+                delete.setVisible(false);
+                Continue.setVisible(false);
+                choseData = 0;
             }
         });
 

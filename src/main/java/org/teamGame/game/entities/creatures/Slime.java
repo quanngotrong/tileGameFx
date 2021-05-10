@@ -35,7 +35,9 @@ public class Slime extends Enemy{
         slimeLeft = new ImageAnimation(135, Assets.slime_left);
         slimeRight = new ImageAnimation(135, Assets.slime_right);
 
-        skillManager.addSkill(1);
+
+//        skillManager.addSkill(1);
+        this.gold = 30;
     }
 
     @Override
@@ -46,7 +48,7 @@ public class Slime extends Enemy{
         slimeLeft.tick();
         slimeRight.tick();
 
-        skillManager.checkAttackSkill1();
+//        skillManager.checkAttackSkill1();
     }
 
     @Override
