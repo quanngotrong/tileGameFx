@@ -16,7 +16,6 @@ AnchorPane {
 }
 
 #continueButton{
-    -fx-background-image: url("image/load_button.png");
     -fx-background-color: transparent;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
