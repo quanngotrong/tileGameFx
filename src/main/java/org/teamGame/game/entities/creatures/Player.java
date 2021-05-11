@@ -282,7 +282,7 @@ public class Player extends Creature {
         handler.getGameCamera().centerOnEntity(this);
 
         //Attack
-        checkAttacks();
+//        checkAttacks();
 
         useSkill();
 
@@ -378,64 +378,64 @@ public class Player extends Creature {
         }
     }
 
-    private void checkAttacks(){
-        if(inventory.isActive())
-            return;
-
-        attackTimer += System.currentTimeMillis() - lastAttackTimer;
-        lastAttackTimer = System.currentTimeMillis();
-        if(attackTimer < attackCoolDown){
-            return;
-        }
-
-        Rectangle cb = getCollisionBounds(0, 0);
-        Rectangle ar = new Rectangle();
-
-        int arSize = 30;
-        ar.setWidth(arSize);
-        ar.setHeight(arSize);
-
-        if(handler.getMouseManager().isLeftPressed() && direction == 1){
-            ar.setX(cb.getX() + cb.getWidth()/2 - arSize/2);
-            ar.setY(cb.getY() - arSize);
-
-
-        } else if(handler.getMouseManager().isLeftPressed() && direction == 2){
-            ar.setX(cb.getX() + cb.getWidth()/2 - arSize/2);
-            ar.setY(cb.getY() + cb.getHeight());
-
-
-        } else if(handler.getMouseManager().isLeftPressed() && direction == 3){
-            ar.setX(cb.getX() - arSize);
-            ar.setY(cb.getY() + cb.getHeight()/2 - arSize/2);
-
-
-        } else if(handler.getMouseManager().isLeftPressed() && direction == 4){
-            ar.setX(cb.getX() + cb.getWidth());
-            ar.setY(cb.getY() + cb.getHeight()/2 - arSize/2);
-
-        } else {
-
-            return;
-        }
-
-        handler.getGraphicsContext().fillRect(ar.getX(), ar.getY(), arSize, arSize);
-
-        attackTimer = 0;
-
-        for(Entity e : handler.getWorld().getEntityManager().getEntities()){
-            if(e.equals(this))
-                continue;
-            if(e.getCollisionBounds(0, 0).intersects(ar.getBoundsInLocal())){
-                e.takeDamage(damage);
-                if(!Configs.IS_MUTE){
-                    if(Sound.punch.getStatus() == MediaPlayer.Status.PLAYING)
-                        Sound.punch.stop();
-                    //Sound.punch.play();
-                }
-            }
-        }
-    }
+//    private void checkAttacks(){
+//        if(inventory.isActive())
+//            return;
+//
+//        attackTimer += System.currentTimeMillis() - lastAttackTimer;
+//        lastAttackTimer = System.currentTimeMillis();
+//        if(attackTimer < attackCoolDown){
+//            return;
+//        }
+//
+//        Rectangle cb = getCollisionBounds(0, 0);
+//        Rectangle ar = new Rectangle();
+//
+//        int arSize = 30;
+//        ar.setWidth(arSize);
+//        ar.setHeight(arSize);
+//
+//        if(handler.getMouseManager().isLeftPressed() && direction == 1){
+//            ar.setX(cb.getX() + cb.getWidth()/2 - arSize/2);
+//            ar.setY(cb.getY() - arSize);
+//
+//
+//        } else if(handler.getMouseManager().isLeftPressed() && direction == 2){
+//            ar.setX(cb.getX() + cb.getWidth()/2 - arSize/2);
+//            ar.setY(cb.getY() + cb.getHeight());
+//
+//
+//        } else if(handler.getMouseManager().isLeftPressed() && direction == 3){
+//            ar.setX(cb.getX() - arSize);
+//            ar.setY(cb.getY() + cb.getHeight()/2 - arSize/2);
+//
+//
+//        } else if(handler.getMouseManager().isLeftPressed() && direction == 4){
+//            ar.setX(cb.getX() + cb.getWidth());
+//            ar.setY(cb.getY() + cb.getHeight()/2 - arSize/2);
+//
+//        } else {
+//
+//            return;
+//        }
+//
+//        handler.getGraphicsContext().fillRect(ar.getX(), ar.getY(), arSize, arSize);
+//
+//        attackTimer = 0;
+//
+//        for(Entity e : handler.getWorld().getEntityManager().getEntities()){
+//            if(e.equals(this))
+//                continue;
+//            if(e.getCollisionBounds(0, 0).intersects(ar.getBoundsInLocal())){
+//                e.takeDamage(damage);
+//                if(!Configs.IS_MUTE){
+//                    if(Sound.punch.getStatus() == MediaPlayer.Status.PLAYING)
+//                        Sound.punch.stop();
+//                    //Sound.punch.play();
+//                }
+//            }
+//        }
+//    }
 
     public void getInput(){
         xMove = 0;

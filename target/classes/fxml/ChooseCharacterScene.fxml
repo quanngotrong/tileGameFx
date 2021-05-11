@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -8,12 +9,48 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <ImageView fitHeight="600.0" fitWidth="800.0">
+         <image>
+            <Image url="@../css/image/choose-character-scene.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="characterShow" fitHeight="306.0" fitWidth="248.0" layoutX="276.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="buy" layoutX="379.0" layoutY="444.0" mnemonicParsing="false" text="buy" />
-      <Button fx:id="nextCharacter" layoutX="638.0" layoutY="230.0" mnemonicParsing="false" text="nextCharcter" />
-      <Button fx:id="next" layoutX="666.0" layoutY="530.0" mnemonicParsing="false" text="next" />
-      <Button fx:id="back" layoutX="103.0" layoutY="530.0" mnemonicParsing="false" text="back" />
-      <Button fx:id="preCharacter" layoutX="51.0" layoutY="230.0" mnemonicParsing="false" text="preCharacter" />
+      <Button fx:id="buy" layoutX="309.0" layoutY="443.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="182.0" text="buy">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Button>
+      <Button fx:id="nextCharacter" layoutX="637.0" layoutY="219.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="107.0" style="-fx-background-color: transparent;" text="nextCharcter">
+         <graphic>
+            <ImageView fitHeight="47.0" fitWidth="102.0">
+               <image>
+                  <Image url="@../css/image/next.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="next" layoutX="607.0" layoutY="500.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="next">
+         <graphic>
+            <ImageView fitHeight="51.0" fitWidth="87.0">
+               <image>
+                  <Image url="@../css/image/next.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="back" layoutX="104.0" layoutY="498.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="86.0" style="-fx-background-color: transparent;" text="back">
+         <graphic>
+            <ImageView fitHeight="51.0" fitWidth="84.0">
+               <image>
+                  <Image url="@../css/image/back.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="preCharacter" layoutX="59.0" layoutY="224.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="126.0" style="-fx-background-color: transparent;" text="preCharacter">
+         <graphic>
+            <ImageView fitHeight="48.0" fitWidth="100.0">
+               <image>
+                  <Image url="@../css/image/pre.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Text fx:id="gold" fill="#b22323" layoutX="626.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="143.0">
          <font>
             <Font size="25.0" />

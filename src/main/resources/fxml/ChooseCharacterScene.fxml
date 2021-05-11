@@ -15,7 +15,10 @@
          </image>
       </ImageView>
       <ImageView fx:id="characterShow" fitHeight="306.0" fitWidth="248.0" layoutX="276.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="buy" layoutX="379.0" layoutY="444.0" mnemonicParsing="false" text="buy" />
+      <Button fx:id="buy" layoutX="309.0" layoutY="443.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="182.0" text="buy">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Button>
       <Button fx:id="nextCharacter" layoutX="637.0" layoutY="219.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="107.0" style="-fx-background-color: transparent;" text="nextCharcter">
          <graphic>
             <ImageView fitHeight="47.0" fitWidth="102.0">
