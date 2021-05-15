@@ -56,12 +56,10 @@ public class Item {
         if(handler == null){
             return;
         }
-        render(gc, (int)(x - handler.getGameCamera().getxOffset()),
-                (int)(y - handler.getGameCamera().getyOffset()));
-    }
-
-    public void render(GraphicsContext gc, int x, int y){
-        gc.drawImage(texture, x , y, ITEMWIDTH, ITEMHEIGHT);
+//        render(gc, (int)(x - handler.getGameCamera().getxOffset()),
+//                (int)(y - handler.getGameCamera().getyOffset()));
+        gc.drawImage(texture,(int)(x - handler.getGameCamera().getxOffset()),
+                (int)(y - handler.getGameCamera().getyOffset()) ,  ITEMWIDTH, ITEMHEIGHT);
     }
 
     //set position in screen

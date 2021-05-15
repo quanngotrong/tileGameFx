@@ -98,14 +98,15 @@ public class EntityManager {
         for(Bullet b : bullets){
             b.render(g);
         }
-        for(Sword s : swords ){
-            s.render(g);
-        }
         for(energyBall eb : fire){
             eb.render(g);
         }
         for(FireRing fr : fireRings){
             fr.render(g);
+        }
+
+        for(Sword s : swords ){
+            s.render(g);
         }
         player.postRender(g);
 

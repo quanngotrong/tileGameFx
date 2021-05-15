@@ -51,35 +51,22 @@ public class KeyManager {
     };
 
     public boolean isMoveUp(){
-        return keys.getOrDefault(KeyCode.W, false) || keys.getOrDefault(KeyCode.UP, false);
+        return keys.getOrDefault(KeyCode.UP, false);
     }
     public boolean isMoveDown(){
-        return keys.getOrDefault(KeyCode.S, false) || keys.getOrDefault(KeyCode.DOWN, false);
+        return keys.getOrDefault(KeyCode.DOWN, false);
     }
     public boolean isMoveLeft(){
-        return keys.getOrDefault(KeyCode.A, false) || keys.getOrDefault(KeyCode.LEFT, false);
+        return keys.getOrDefault(KeyCode.LEFT, false);
     }
     public boolean isMoveRight(){
-        return keys.getOrDefault(KeyCode.D, false) || keys.getOrDefault(KeyCode.RIGHT, false);
-    }
-    public boolean isSpace(){
-        return keys.getOrDefault(KeyCode.SPACE, false);
-    }
-    public boolean isPause(){
-        return keys.getOrDefault(KeyCode.P, false);
-    }
-    public boolean isSpell(){
-        return keys.getOrDefault(KeyCode.Q, false);
-    }
-
-    public boolean isDestroyThemAll(){
-        return keys.getOrDefault(KeyCode.CONTROL, false) && keys.getOrDefault(KeyCode.TAB, false);
+        return keys.getOrDefault(KeyCode.RIGHT, false);
     }
 
     public boolean isSkill1(){return keys.getOrDefault(KeyCode.Q, false);}
-    public boolean isSkill2(){return keys.getOrDefault(KeyCode.E, false);}
-    public boolean isSkill3(){return keys.getOrDefault(KeyCode.R, false);}
-    public boolean isSkill4(){return keys.getOrDefault(KeyCode.SPACE, false);}
+    public boolean isSkill2(){return keys.getOrDefault(KeyCode.W, false);}
+    public boolean isSkill3(){return keys.getOrDefault(KeyCode.E, false);}
+    public boolean isSkill4(){return keys.getOrDefault(KeyCode.R, false);}
 
     public boolean isEnter() {
         return keys.getOrDefault(KeyCode.ENTER, false);

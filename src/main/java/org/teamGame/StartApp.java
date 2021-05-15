@@ -37,6 +37,7 @@ public class StartApp extends Application {
     //sound
     private SoundManager soundManager;
 
+    //
     @Override
     public void start(Stage stage) {
         this.stage = stage;
@@ -65,6 +66,13 @@ public class StartApp extends Application {
         });
     }
 
+    /*
+    được gọi đầu tiên sau khi contruct class này
+    có tác dụng load:
+    + sound
+    + asset
+    + saved data
+     */
     @Override
     public void init() throws Exception {
         super.init();
@@ -73,8 +81,11 @@ public class StartApp extends Application {
         soundManager = new SoundManager(handlerApp);
 
         handlerApp = new HandlerApp(this);
+
+        //load image, assets in game
         Assets.init();
 
+        //load saved data
         saveData = Utils.loadData();
 
         handlerApp.setCreditScene(new CreditScene(handlerApp));
@@ -82,7 +93,6 @@ public class StartApp extends Application {
         handlerApp.setGameOverScene(new GameOverScene(handlerApp));
         handlerApp.setDifficultyScene(new DifficultyScene(handlerApp));
         handlerApp.setChooseCharacterScene(new ChooseCharacterScene(handlerApp));
-
 
         gold = saveData.getGold();
 
@@ -110,10 +120,6 @@ public class StartApp extends Application {
 
     public StartScene getStartScene() {
         return startScene;
-    }
-
-    public void setStartScene(StartScene startScene) {
-        this.startScene = startScene;
     }
 
     public Scene getScene() {
@@ -152,15 +158,7 @@ public class StartApp extends Application {
         return soundManager;
     }
 
-    public void setSoundManager(SoundManager soundManager) {
-        this.soundManager = soundManager;
-    }
-
     public Stage getSettingStage() {
         return settingStage;
-    }
-
-    public void setSettingStage(Stage settingStage) {
-        this.settingStage = settingStage;
     }
 }
