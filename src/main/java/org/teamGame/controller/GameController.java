@@ -106,9 +106,6 @@ public class GameController implements FxController{
     private Text countDown4;
 
     @FXML
-    private GridPane containter13;
-
-    @FXML
     private Button pause;
 
     @FXML
@@ -216,10 +213,6 @@ public class GameController implements FxController{
 
     public Text getCountDown4() {
         return countDown4;
-    }
-
-    public GridPane getContainter13() {
-        return containter13;
     }
 
     public Button getPause() {

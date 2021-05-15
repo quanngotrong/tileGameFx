@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import org.teamGame.StartApp;
 import org.teamGame.game.Handler;
 import org.teamGame.game.entities.creatures.Player;
 import org.teamGame.game.gfx.Assets;
@@ -15,6 +16,10 @@ public class Item {
     public static Item lotionMana = new Item(Assets.lotionMana, "lotion mana", 0);
     public static Item lotionHP = new Item(Assets.lotionHP, "lotion hp", 1);
     public static Item lotionAttack = new Item(Assets.lotionDamage, "lotion damage", 2);
+    public static Item sword1 = new Item(Assets.sword1, "sword", 3);
+    public static Item armor1= new Item(Assets.armor1, "armor", 4);
+    public static Item jewelry = new Item(Assets.jewelry, "jewelry", 5);
+
 
     //class
     public static final int ITEMWIDTH = 32, ITEMHEIGHT = 32;
@@ -103,6 +108,15 @@ public class Item {
             case 2:
                 player.setDamage(player.getDamage() + 10);
                 break;
+            case 3:
+                player.setDamage(player.getDamage() + 20);
+                break;
+            case 4:
+                player.setDefence(player.getDefence() + 5);
+                break;
+            case 5:
+                StartApp.getSaveData().setGold(StartApp.getSaveData().getGold()+500);
+                break;
         }
         player.showProperty();
         player.showHPEX();
@@ -119,6 +133,15 @@ public class Item {
                 break;
             case 2:
                 TextItem.drawString(g, "Damage: +10", 352 + invX, 172 + invY, Color.WHITE, Assets.font20);
+                break;
+            case 3:
+                TextItem.drawString(g, "Damage: + 20", 352 + invX, 172 + invY, Color.WHITE, Assets.font20);
+                break;
+            case 4:
+                TextItem.drawString(g, "Defence: + 5", 352 + invX, 172 + invY, Color.WHITE, Assets.font20);
+                break;
+            case 5:
+                TextItem.drawString(g, "gold: + 500", 352 + invX, 172 + invY, Color.WHITE, Assets.font20);
                 break;
         }
 

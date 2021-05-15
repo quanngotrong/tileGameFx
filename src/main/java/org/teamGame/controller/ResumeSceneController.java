@@ -90,7 +90,7 @@ public class ResumeSceneController implements FxController{
 
                     Player player = handler.getWorld().getEntityManager().getPlayer();
 
-                    int[] items = new int[]{0,0,0};
+                    int[] items = new int[]{0,0,0,0,0,0};
                     for(Item i : player.getInventory().getInventoryItems()){
                         items[i.getId()] = i.getCount();
                     }
@@ -105,7 +105,7 @@ public class ResumeSceneController implements FxController{
                 else{
 
                     Player player = handler.getWorld().getEntityManager().getPlayer();
-                    int[] items = new int[]{0,0,0};
+                    int[] items = new int[]{0,0,0,0,0,0};
                     for(Item i : player.getInventory().getInventoryItems()){
                         items[i.getId()] = i.getCount();
                     }

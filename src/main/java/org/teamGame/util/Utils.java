@@ -104,10 +104,13 @@ public class Utils {
         int skills[] = new int[5];
         skills[1] = 2;
         skills[2] = 3;
-        int items[] = new int[3];
+        int items[] = new int[6];
         items[0] = 1;
         items[1] = 1;
         items[2] = 1;
+        items[3] = 1;
+        items[4] = 1;
+        items[5] = 1;
 
         boolean[] characters = new boolean[]{true, true, true, false, false, false ,false ,false ,false, false};
         SaveDataGame saveDataGame = new SaveDataGame(1, 500, 500, 0, 50, 0,

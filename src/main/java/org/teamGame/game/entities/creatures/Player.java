@@ -160,12 +160,15 @@ public class Player extends Creature {
 
         //item
         inventory = new Inventory(handler);
-        items = new int[3];
+        items = new int[6];
         items = saveDataGame.getItems();
         System.out.println(saveDataGame.getItems());
         inventory.addItem(Item.lotionHP.createNew(items[0]));
         inventory.addItem(Item.lotionAttack.createNew(items[1]));
         inventory.addItem(Item.lotionMana.createNew(items[2]));
+        inventory.addItem(Item.sword1.createNew(items[3]));
+        inventory.addItem(Item.armor1.createNew(items[4]));
+        inventory.addItem(Item.jewelry.createNew(items[5]));
 
         //set speed
         setSpeed(saveDataGame.getSpeed());
@@ -281,9 +284,6 @@ public class Player extends Creature {
         //center
         handler.getGameCamera().centerOnEntity(this);
 
-        //Attack
-//        checkAttacks();
-
         useSkill();
 
         //inventory
@@ -377,65 +377,6 @@ public class Player extends Creature {
             }
         }
     }
-
-//    private void checkAttacks(){
-//        if(inventory.isActive())
-//            return;
-//
-//        attackTimer += System.currentTimeMillis() - lastAttackTimer;
-//        lastAttackTimer = System.currentTimeMillis();
-//        if(attackTimer < attackCoolDown){
-//            return;
-//        }
-//
-//        Rectangle cb = getCollisionBounds(0, 0);
-//        Rectangle ar = new Rectangle();
-//
-//        int arSize = 30;
-//        ar.setWidth(arSize);
-//        ar.setHeight(arSize);
-//
-//        if(handler.getMouseManager().isLeftPressed() && direction == 1){
-//            ar.setX(cb.getX() + cb.getWidth()/2 - arSize/2);
-//            ar.setY(cb.getY() - arSize);
-//
-//
-//        } else if(handler.getMouseManager().isLeftPressed() && direction == 2){
-//            ar.setX(cb.getX() + cb.getWidth()/2 - arSize/2);
-//            ar.setY(cb.getY() + cb.getHeight());
-//
-//
-//        } else if(handler.getMouseManager().isLeftPressed() && direction == 3){
-//            ar.setX(cb.getX() - arSize);
-//            ar.setY(cb.getY() + cb.getHeight()/2 - arSize/2);
-//
-//
-//        } else if(handler.getMouseManager().isLeftPressed() && direction == 4){
-//            ar.setX(cb.getX() + cb.getWidth());
-//            ar.setY(cb.getY() + cb.getHeight()/2 - arSize/2);
-//
-//        } else {
-//
-//            return;
-//        }
-//
-//        handler.getGraphicsContext().fillRect(ar.getX(), ar.getY(), arSize, arSize);
-//
-//        attackTimer = 0;
-//
-//        for(Entity e : handler.getWorld().getEntityManager().getEntities()){
-//            if(e.equals(this))
-//                continue;
-//            if(e.getCollisionBounds(0, 0).intersects(ar.getBoundsInLocal())){
-//                e.takeDamage(damage);
-//                if(!Configs.IS_MUTE){
-//                    if(Sound.punch.getStatus() == MediaPlayer.Status.PLAYING)
-//                        Sound.punch.stop();
-//                    //Sound.punch.play();
-//                }
-//            }
-//        }
-//    }
 
     public void getInput(){
         xMove = 0;

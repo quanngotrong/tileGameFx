@@ -169,13 +169,19 @@ public abstract class Enemy extends Creature{
         System.out.println(GameState.gold);
         // System.out.println("xin lũiiii mà :(");
 
-        int rand = (int) (Math.random() * 5);
+        int rand = (int) (Math.random() * 20);
         if(rand == 1){
             handler.getWorld().getItemManager().addItem(Item.lotionHP.createNew((int) x, (int) y));
         }else if(rand == 2){
             handler.getWorld().getItemManager().addItem(Item.lotionMana.createNew((int) x, (int) y));
         }else if(rand == 3) {
             handler.getWorld().getItemManager().addItem(Item.lotionAttack.createNew((int) x, (int) y));
+        }else if(rand == 5) {
+            handler.getWorld().getItemManager().addItem(Item.sword1.createNew((int) x, (int) y));
+        }else if(rand == 6) {
+            handler.getWorld().getItemManager().addItem(Item.armor1.createNew((int) x, (int) y));
+        }else if(rand == 7) {
+            handler.getWorld().getItemManager().addItem(Item.jewelry.createNew((int) x, (int) y));
         }
 
         handler.getWorld().getEntityManager().getPlayer().addExpe(ex);
