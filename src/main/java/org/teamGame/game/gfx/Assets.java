@@ -16,7 +16,6 @@ public class Assets {
     public static Image[][] map3 = new Image[30][30];
     public static Image[][] map4 = new Image[30][30];
 
-
     public static Image[] slime_up, slime_down, slime_left, slime_right;
     public static Image talk;
 
@@ -59,7 +58,7 @@ public class Assets {
     public static Image character9;
 
     //skill
-    public static Image fireBallSkill, swordSkill, saydaSkill;
+    public static Image fireBallSkill, swordSkill, saydaSkill, spellSkill;
     public static Image[] sayda = new Image[4];
 
     public static Image lock;
@@ -80,8 +79,8 @@ public class Assets {
         //skill
         fireBallSkill = ImageLoader.loadImage("/css/image/FireballIcon.png");
         swordSkill = ImageLoader.loadImage("/css/image/swordSkill.jpg");
-        saydaSkill = ImageLoader.loadImage("/css/image/songoku.jpg");
-
+        saydaSkill = ImageLoader.loadImage("/css/image/songoku1.jpg");
+        spellSkill = ImageLoader.loadImage("/css/image/spellSkill.jpg");
         //sayda
         SpriteSheet saydaSheet =new SpriteSheet(ImageLoader.loadImage("/textures/saydaEffect.png"));
 

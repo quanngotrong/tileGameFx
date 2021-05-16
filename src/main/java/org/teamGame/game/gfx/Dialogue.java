@@ -1,4 +1,4 @@
-package org.teamGame.game.dialogue;
+package org.teamGame.game.gfx;
 
 public class Dialogue {
     public static String Jill = "Muộn rồi \nmà sao còn...";

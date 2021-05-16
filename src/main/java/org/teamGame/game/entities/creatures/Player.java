@@ -155,7 +155,7 @@ public class Player extends Creature {
     }
 
     public void init(){
-
+        isPlayer=1;
         // foot sound
         footstep = Sound.footstep;
         handler.getSoundManager().addSound(footstep);
@@ -201,7 +201,7 @@ public class Player extends Creature {
         for(int i = 1; i<= countSkill; i++){
             skillManager.addSkill(saveDataGame.getSkills()[i]);
         }
-//        skillManager.addSkill(5);
+//        skillManager.addSkill(1);
 
 //        skillManager.addSkill(3);
 
@@ -365,31 +365,7 @@ public class Player extends Creature {
                 GameState.entityManager.getPlayer().setX(GameState.world[0].getSpawnXPre());
                 GameState.entityManager.getPlayer().setY(GameState.world[0].getSpawnYPre());
             }
-//            GameState.playerCurrentHealth = handler.getWorld().getEntityManager().getPlayer().getHealth();
-//            GameState.playerCurrentSpeed = handler.getWorld().getEntityManager().getPlayer().getSpeed();
-//
             handler.setWorld(GameState.world[0], tele);
-//
-//            GameState.entityManager.getPlayer().setHealth(GameState.playerCurrentHealth);
-//            GameState.entityManager.getPlayer().setSpeed(GameState.playerCurrentSpeed);
-//
-//            GameState.entityManager.getPlayer().setDamage(damage);
-//            GameState.entityManager.getPlayer().setAp(ap);
-//            GameState.entityManager.getPlayer().setDefence(defence);
-//            GameState.entityManager.getPlayer().setEx(ex);
-//            GameState.entityManager.getPlayer().setMaxHealth(maxHealth);
-//            GameState.entityManager.getPlayer().setMaxEx(maxEx);
-//            GameState.entityManager.getPlayer().setLevel(level);
-//
-//            GameState.entityManager.getPlayer().setLastSayda(lastSayda);
-//            GameState.entityManager.getPlayer().setSayda(isSayda);
-//
-//            GameState.entityManager.getPlayer().setSkillManager(skillManager);
-//            GameState.entityManager.getPlayer().getSkillManager().setPlayer(GameState.entityManager.getPlayer());
-//            GameState.entityManager.getPlayer().setCountSkill(skillManager.getCount());
-
-
-
         }
 
     }
@@ -526,6 +502,9 @@ public class Player extends Creature {
         }else{
             if(level == 1){
                 skillManager.addSkill(5);
+            }
+            if(level == 2){
+                skillManager.addSkill(1);
             }
             ex = ex + e - maxEx;
             maxEx = maxEx + level * 50;

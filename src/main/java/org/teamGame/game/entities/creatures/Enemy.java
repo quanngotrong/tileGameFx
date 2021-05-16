@@ -39,6 +39,8 @@ public abstract class Enemy extends Creature{
         skillManager = new SkillManager(handler, this);
         ex = 10;
         gold = 100;
+
+        isPlayer = 2;
     }
 
     @Override

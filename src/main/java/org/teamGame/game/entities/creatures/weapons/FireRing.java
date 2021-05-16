@@ -68,20 +68,10 @@ public class FireRing extends Creature {
         if(isPlayer == 0){
             if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0)
                     .intersects(getCollisionBounds(0,0).getBoundsInLocal())){
-                handler.getWorld().getEntityManager().getPlayer().takeDamage(10);
+                handler.getWorld().getEntityManager().getPlayer().takeDamage(1 + handler.getWorld().getEntityManager().getPlayer().getDefence());
                 System.out.println(damage);
             }
             System.out.println(x +" " + y+ " " + bounds.getHeight()+" "+ bounds.getWidth());
-
-//            for(Entity e : handler.getWorld().getEntityManager().getEntities()){
-//                if(!e.equals(handler.getWorld().getEntityManager().getPlayer()))
-//                    continue;
-//                if(e.getCollisionBounds(0, 0).intersects(getCollisionBounds(0,0).getBoundsInLocal())){
-//                    e.takeDamage(damage);
-//                    System.out.println("ha");
-//                }
-//            }
-
         }
     }
 

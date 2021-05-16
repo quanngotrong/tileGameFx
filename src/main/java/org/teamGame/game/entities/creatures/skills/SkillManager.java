@@ -16,9 +16,9 @@ public class SkillManager {
 
     //skill array
     //skill 1: Q
-    //skill 2: E
-    //skill 3: R
-    //skill 4: space
+    //skill 2: W
+    //skill 3: E
+    //skill 4: R
     private int skills[];
 
     //count amount of skill
@@ -144,6 +144,7 @@ public class SkillManager {
                     switch (skill) {
                         case 1:
                             skillArray.add(new SpellSkill(handler, isPlayer, player, i));
+                            imageView.setImage(Assets.spellSkill);
                             break;
                         case 2:
                             skillArray.add(new BulletSkill(handler, isPlayer, player, i));
@@ -155,6 +156,7 @@ public class SkillManager {
                             break;
                         case 4:
                             skillArray.add(new FireRingSkill(handler, isPlayer, player, i));
+
                             break;
                         case 5:
                             skillArray.add(new SaydaSkill(handler, isPlayer, player, i));

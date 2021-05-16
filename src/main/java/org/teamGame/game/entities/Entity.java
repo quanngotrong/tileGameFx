@@ -18,6 +18,7 @@ public abstract class Entity {
     protected SnapshotParameters params;
     protected int health, maxHealth;
     protected int defence;
+    protected int isPlayer =0;
 
     protected boolean active = true;
 
@@ -140,5 +141,13 @@ public abstract class Entity {
 
     public void setDefence(int defence) {
         this.defence = defence;
+    }
+
+    public int getIsPlayer() {
+        return isPlayer;
+    }
+
+    public void setIsPlayer(int isPlayer) {
+        this.isPlayer = isPlayer;
     }
 }
