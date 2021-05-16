@@ -40,7 +40,10 @@ public class World {
     //Player
     private Image player;
 
-    public World(Handler handler, String path){
+    //player object
+    private Player playerObject;
+
+    public World(Handler handler, String path, int id){
         this.handler = handler;
 
         loadWorld(path);
@@ -51,44 +54,52 @@ public class World {
             spawnX = spawnXPre;
             spawnY = spawnYPre;
         }
+        if(id == 1) {
+            //choose player
+            int saved = handler.getGameManager().getSaved();
+            int character = StartApp.getSaveData().savedGame.get(saved).getCharacter();
 
-        //choose player
-        int saved = handler.getGameManager().getSaved();
-        int character = StartApp.getSaveData().savedGame.get(saved).getCharacter();
 
-        if(character == 0){
-            entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY, Configs.PLAYER_SWORD_DAMAGE));
+            if (character == 0) {
+                this.playerObject = new Player(handler, spawnX, spawnY, Configs.PLAYER_SWORD_DAMAGE);
+
+            } else if (character == 1) {//monk
+                playerObject= new Player(handler, Assets.male_npcs,
+                        spawnX, spawnY, 0, 264, 462, 264, 330, 396, Configs.PLAYER_SWORD_DAMAGE);
+
+            } else if (character == 2) {//jill
+                playerObject = new Player(handler, Assets.female_npcs,
+                        spawnX, spawnY, 0, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE);
+            } else if (character == 3) {//jack
+                playerObject = new Player(handler, Assets.male_npcs,
+                        spawnX, spawnY, 0, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE);
+            } else if (character == 4) {//guard
+                playerObject = new Player(handler, Assets.male_npcs,
+                        spawnX, spawnY, 264, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE);
+            } else if (character == 5) {//greenhair
+                playerObject = new Player(handler, Assets.children_npcs,
+                        spawnX, spawnY, 0, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE);
+            } else if (character == 6) {//grandma
+                playerObject = new Player(handler, Assets.female_npcs,
+                        spawnX, spawnY, 132, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE);
+            } else if (character == 7) {//femaleguard
+                playerObject = new Player(handler, Assets.female_npcs,
+                        spawnX, spawnY, 264, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE);
+            } else if (character == 8) {//farmer
+                playerObject = new Player(handler, Assets.male_npcs,
+                        spawnX, spawnY, 132, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE);
+            } else if (character == 9) {//bluehat
+                playerObject = new Player(handler, Assets.children_npcs,
+                        spawnX, spawnY, 264, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE);
+            }
+            entityManager = new EntityManager(handler, playerObject);
+            itemManager = new ItemManager(handler);
+            handler.setPlayer(playerObject);
+            handler.setItemManager(itemManager);
+        }else{
+            entityManager = new EntityManager(handler, handler.getPlayer());
+            itemManager = handler.getItemManager();
         }
-        else if(character == 1){//monk
-            entityManager = new EntityManager(handler, new Player(handler, Assets.male_npcs,
-                    spawnX, spawnY, 0, 264, 462, 264, 330, 396, Configs.PLAYER_SWORD_DAMAGE));
-        }else if(character == 2){//jill
-            entityManager = new EntityManager(handler, new Player(handler, Assets.female_npcs,
-                    spawnX, spawnY,  0, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
-        }else if(character == 3){//jack
-            entityManager = new EntityManager(handler, new Player(handler, Assets.male_npcs,
-                    spawnX, spawnY,  0, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
-        }else if(character == 4){//guard
-            entityManager = new EntityManager(handler, new Player(handler, Assets.male_npcs,
-                    spawnX, spawnY,  264, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
-        }else if(character == 5){//greenhair
-            entityManager = new EntityManager(handler, new Player(handler, Assets.children_npcs,
-                    spawnX, spawnY, 0, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
-        }else if(character == 6){//grandma
-            entityManager = new EntityManager(handler, new Player(handler, Assets.female_npcs,
-                    spawnX, spawnY, 132, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
-        }else if(character == 7){//femaleguard
-            entityManager = new EntityManager(handler, new Player(handler, Assets.female_npcs,
-                    spawnX, spawnY, 264, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
-        }else if(character == 8){//farmer
-            entityManager = new EntityManager(handler, new Player(handler, Assets.male_npcs,
-                    spawnX, spawnY, 132, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
-        }else if(character == 9){//bluehat
-            entityManager = new EntityManager(handler, new Player(handler, Assets.children_npcs,
-                    spawnX, spawnY, 264, 0, 196, 0, 66, 132, Configs.PLAYER_SWORD_DAMAGE));
-        }
-
-        itemManager = new ItemManager(handler);
     }
 
     public void tick(){
@@ -264,6 +275,8 @@ public class World {
     public ItemManager getItemManager() {
         return itemManager;
     }
+
+
 
     public void setItemManager(ItemManager itemManager) {
         this.itemManager = itemManager;

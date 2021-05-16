@@ -32,10 +32,10 @@ public class GameState {
         this.handler = handler;
 
         //load world
-        world[1] = new World(handler, "src/main/resources/worlds/world1.txt");
-        world[2] = new World(handler, "src/main/resources/worlds/world2.txt");
-        world[3] = new World(handler, "src/main/resources/worlds/world3.txt");
-        world[4] = new World(handler, "src/main/resources/worlds/world4.txt");
+        world[1] = new World(handler, "src/main/resources/worlds/world1.txt", 1);
+        world[2] = new World(handler, "src/main/resources/worlds/world2.txt", 2);
+        world[3] = new World(handler, "src/main/resources/worlds/world3.txt", 3);
+        world[4] = new World(handler, "src/main/resources/worlds/world4.txt", 4);
         world[0] = world[1];
 
         handler.setWorld(world[0], true);
@@ -95,17 +95,8 @@ public class GameState {
             stateSound.play();
 
         world[0].tick();
-//        checkPause();
-//        checkWin();
     }
 
-    public void checkPause(){
-
-    }
-
-    public void checkWin(){
-
-    }
 
     public void render(GraphicsContext g){
         world[0].render(g);

@@ -153,4 +153,6 @@ public class Inventory {
     public void setInventoryItems(ArrayList<Item> inventoryItems) {
         this.inventoryItems = inventoryItems;
     }
+
+
 }

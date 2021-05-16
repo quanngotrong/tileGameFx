@@ -2,9 +2,11 @@ package org.teamGame.game;
 
 import javafx.scene.canvas.GraphicsContext;
 import org.teamGame.controller.GameController;
+import org.teamGame.game.entities.creatures.Player;
 import org.teamGame.game.gfx.GameCamera;
 import org.teamGame.game.input.KeyManager;
 import org.teamGame.game.input.MouseManager;
+import org.teamGame.game.items.ItemManager;
 import org.teamGame.sounds.SoundManager;
 import org.teamGame.game.worlds.World;
 
@@ -19,6 +21,10 @@ public class Handler {
     private World world;
     private boolean tele = true;
     private boolean win = false;
+
+    private Player player;
+
+    private ItemManager itemManager;
 
     public Handler(GameManager gameManager){
         this.gameManager = gameManager;
@@ -101,6 +107,19 @@ public class Handler {
         this.gameManager = gameManager;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
+    public ItemManager getItemManager() {
+        return itemManager;
+    }
+
+    public void setItemManager(ItemManager itemManager) {
+        this.itemManager = itemManager;
+    }
 }

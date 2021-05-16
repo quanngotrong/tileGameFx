@@ -84,6 +84,8 @@ public class SkillManager {
     skill 1: spellSkill
     skill 2: bulletSkill
     skill 3: swordSkill
+    skill 4: fire ring
+    skill 5: sayda skill
      */
     public void addSkill(int skill){
         if(count == 4){
@@ -108,6 +110,9 @@ public class SkillManager {
                         case 4:
                             skillArray.add(new FireRingSkill(handler, isPlayer, enemy, i));
                             break;
+                        case 5:
+                            skillArray.add(new SaydaSkill(handler, isPlayer, enemy, i));
+                            break;
                     }
                     break;
                 }
@@ -131,6 +136,7 @@ public class SkillManager {
                         case 4:
                             imageView = handler.getGameController().getSkill4();
                             break;
+
                     }
 
                     skills[i] = skill;
@@ -149,6 +155,10 @@ public class SkillManager {
                             break;
                         case 4:
                             skillArray.add(new FireRingSkill(handler, isPlayer, player, i));
+                            break;
+                        case 5:
+                            skillArray.add(new SaydaSkill(handler, isPlayer, player, i));
+                            imageView.setImage(Assets.saydaSkill);
                             break;
                     }
                     break;
@@ -179,5 +189,13 @@ public class SkillManager {
 
     public void setSkillArray(ArrayList<Skill> skillArray) {
         this.skillArray = skillArray;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

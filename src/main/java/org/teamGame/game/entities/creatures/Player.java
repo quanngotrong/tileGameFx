@@ -15,6 +15,7 @@ import org.teamGame.game.entities.creatures.skills.SkillManager;
 import org.teamGame.game.entities.creatures.weapons.Bullet;
 import org.teamGame.game.entities.creatures.weapons.Sword;
 import org.teamGame.game.gfx.Assets;
+import org.teamGame.game.gfx.ImageAnimation;
 import org.teamGame.game.gfx.SpriteAnimation;
 import org.teamGame.game.inventory.Inventory;
 import org.teamGame.game.items.Item;
@@ -67,6 +68,12 @@ public class Player extends Creature {
 
     //item
     private int items[];
+
+    //sayda mode
+    private boolean isSayda = false;
+    private ImageAnimation saydaAnimation;
+    private long lastSayda = 0;
+
 
     //constructor khi khong dung skin
     public Player(Handler handler, double x, double y, int damage) {
@@ -153,7 +160,8 @@ public class Player extends Creature {
         footstep = Sound.footstep;
         handler.getSoundManager().addSound(footstep);
 
-
+        //sayda animation
+        saydaAnimation = new ImageAnimation(150, Assets.sayda);
 
         //load saved game
         SaveDataGame saveDataGame = StartApp.getSaveData().savedGame.get(handler.getGameManager().getSaved());
@@ -193,6 +201,7 @@ public class Player extends Creature {
         for(int i = 1; i<= countSkill; i++){
             skillManager.addSkill(saveDataGame.getSkills()[i]);
         }
+//        skillManager.addSkill(5);
 
 //        skillManager.addSkill(3);
 
@@ -291,6 +300,22 @@ public class Player extends Creature {
 
         //test
         skillManager.showCountDown();
+
+        //sayda skill
+        if(isSayda) {
+            if(System.currentTimeMillis() - lastSayda >= 3000){
+                isSayda= false;
+                defence -= 15;
+                damage -= 40;
+                speed -= 10;
+                ap -= 40;
+                showProperty();
+            }
+            else {
+                saydaAnimation.tick();
+            }
+        }
+
     }
 
     //CHECKPOINT
@@ -326,21 +351,45 @@ public class Player extends Creature {
         {
             //neu thang nguoi o nua ban trai thi ve map truoc, o ben phai thi tien den map tiep
             if (handler.getWorld().getWidth() * 64 * 2 / 3 <= x + xMove) {
+
                 GameState.world[0] = GameState.world[handler.getWorld().getCountWorld() + 1];
                 GameState.entityManager = GameState.world[handler.getWorld().getCountWorld() + 1].getEntityManager();
+
                 tele = true;
+                GameState.entityManager.getPlayer().setX(GameState.world[0].getSpawnXNext());
+                GameState.entityManager.getPlayer().setY(GameState.world[0].getSpawnYNext());
             } else {
                 GameState.world[0] = GameState.world[handler.getWorld().getCountWorld() - 1];
                 GameState.entityManager = GameState.world[handler.getWorld().getCountWorld() - 1].getEntityManager();
                 tele = false;
+                GameState.entityManager.getPlayer().setX(GameState.world[0].getSpawnXPre());
+                GameState.entityManager.getPlayer().setY(GameState.world[0].getSpawnYPre());
             }
-            GameState.playerCurrentHealth = handler.getWorld().getEntityManager().getPlayer().getHealth();
-            GameState.playerCurrentSpeed = handler.getWorld().getEntityManager().getPlayer().getSpeed();
-
+//            GameState.playerCurrentHealth = handler.getWorld().getEntityManager().getPlayer().getHealth();
+//            GameState.playerCurrentSpeed = handler.getWorld().getEntityManager().getPlayer().getSpeed();
+//
             handler.setWorld(GameState.world[0], tele);
+//
+//            GameState.entityManager.getPlayer().setHealth(GameState.playerCurrentHealth);
+//            GameState.entityManager.getPlayer().setSpeed(GameState.playerCurrentSpeed);
+//
+//            GameState.entityManager.getPlayer().setDamage(damage);
+//            GameState.entityManager.getPlayer().setAp(ap);
+//            GameState.entityManager.getPlayer().setDefence(defence);
+//            GameState.entityManager.getPlayer().setEx(ex);
+//            GameState.entityManager.getPlayer().setMaxHealth(maxHealth);
+//            GameState.entityManager.getPlayer().setMaxEx(maxEx);
+//            GameState.entityManager.getPlayer().setLevel(level);
+//
+//            GameState.entityManager.getPlayer().setLastSayda(lastSayda);
+//            GameState.entityManager.getPlayer().setSayda(isSayda);
+//
+//            GameState.entityManager.getPlayer().setSkillManager(skillManager);
+//            GameState.entityManager.getPlayer().getSkillManager().setPlayer(GameState.entityManager.getPlayer());
+//            GameState.entityManager.getPlayer().setCountSkill(skillManager.getCount());
 
-            GameState.entityManager.getPlayer().setHealth(GameState.playerCurrentHealth);
-            GameState.entityManager.getPlayer().setSpeed(GameState.playerCurrentSpeed);
+
+
         }
 
     }
@@ -432,9 +481,14 @@ public class Player extends Creature {
         else animation.stop();
 
         player = imageView.snapshot(params, null);
+
         g.drawImage(player, (int)(x - handler.getGameCamera().getxOffset()),
                 (int) (y - handler.getGameCamera().getyOffset()));
 
+        if(isSayda) {
+            g.drawImage(saydaAnimation.getCurrentFrame(), (int) (x - handler.getGameCamera().getxOffset()) - width / 2,
+                    (int) (y - handler.getGameCamera().getyOffset()) - height / 2, width * 2, height + height / 2);
+        }
     }
 
     public void postRender(GraphicsContext g){
@@ -470,6 +524,9 @@ public class Player extends Creature {
         if(ex + e < maxEx) {
             this.ex += e;
         }else{
+            if(level == 1){
+                skillManager.addSkill(5);
+            }
             ex = ex + e - maxEx;
             maxEx = maxEx + level * 50;
             level ++;
@@ -558,5 +615,21 @@ public class Player extends Creature {
 
     public void setItems(int[] items) {
         this.items = items;
+    }
+
+    public boolean isSayda() {
+        return isSayda;
+    }
+
+    public void setSayda(boolean sayda) {
+        isSayda = sayda;
+    }
+
+    public long getLastSayda() {
+        return lastSayda;
+    }
+
+    public void setLastSayda(long lastSayda) {
+        this.lastSayda = lastSayda;
     }
 }

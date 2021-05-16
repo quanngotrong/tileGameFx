@@ -59,7 +59,8 @@ public class Assets {
     public static Image character9;
 
     //skill
-    public static Image fireBallSkill, swordSkill;
+    public static Image fireBallSkill, swordSkill, saydaSkill;
+    public static Image[] sayda = new Image[4];
 
     public static Image lock;
 
@@ -79,6 +80,15 @@ public class Assets {
         //skill
         fireBallSkill = ImageLoader.loadImage("/css/image/FireballIcon.png");
         swordSkill = ImageLoader.loadImage("/css/image/swordSkill.jpg");
+        saydaSkill = ImageLoader.loadImage("/css/image/songoku.jpg");
+
+        //sayda
+        SpriteSheet saydaSheet =new SpriteSheet(ImageLoader.loadImage("/textures/saydaEffect.png"));
+
+        sayda[0] = saydaSheet.crop(280, 160, 96,96);
+        sayda[1] = saydaSheet.crop(392, 160, 96,96);
+        sayda[2] = saydaSheet.crop(496, 160, 96,96);
+        sayda[3] = saydaSheet.crop(600, 160, 96,96);
 
         //inventory
         inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");

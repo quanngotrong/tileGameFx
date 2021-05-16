@@ -24,10 +24,10 @@ module org.example {
     exports org.teamGame.game;
     exports org.teamGame.game.worlds;
     exports org.teamGame.game.gfx;
-//    exports org.teamGame.game.tiles;
+
     exports org.teamGame.game.input;
     exports org.teamGame.game.entities;
     exports org.teamGame.sounds;
     exports org.teamGame.game.entities.creatures;
-//    exports org.teamGame.game.entities.statics;
+
 }

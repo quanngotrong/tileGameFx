@@ -87,9 +87,14 @@ public class ResumeSceneController implements FxController{
                 }
                 int saved = handler.getGameManager().getSaved();
                 if(saved == 0){
-
                     Player player = handler.getWorld().getEntityManager().getPlayer();
 
+                    if(player.isSayda()){
+                        player.setDefence(player.getDefence() - 15);
+                        player.setDamage(player.getDamage() - 40);
+                        player.setSpeed(player.getSpeed() - 10);
+                        player.setAp(player.getAp() - 40);
+                    }
                     int[] items = new int[]{0,0,0,0,0,0};
                     for(Item i : player.getInventory().getInventoryItems()){
                         items[i.getId()] = i.getCount();
@@ -101,10 +106,25 @@ public class ResumeSceneController implements FxController{
                             StartApp.getSaveData().savedGame.get(saved).getDifficulty(), player.getLevel(), player.getAp(), items);
                     StartApp.getSaveData().savedGame.add(saveDataGame);
                     handler.getGameManager().setSaved(StartApp.getSaveData().savedGame.indexOf(saveDataGame)) ;
+
+                    if(player.isSayda()) {
+                        player.setDefence(player.getDefence() + 15);
+                        player.setDamage(player.getDamage() + 40);
+                        player.setSpeed(player.getSpeed() + 10);
+                        player.setAp(player.getAp() + 40);
+                    }
                 }
                 else{
 
                     Player player = handler.getWorld().getEntityManager().getPlayer();
+
+                    if(player.isSayda()){
+                        player.setDefence(player.getDefence() - 15);
+                        player.setDamage(player.getDamage() - 40);
+                        player.setSpeed(player.getSpeed() - 10);
+                        player.setAp(player.getAp() - 40);
+                    }
+
                     int[] items = new int[]{0,0,0,0,0,0};
                     for(Item i : player.getInventory().getInventoryItems()){
                         items[i.getId()] = i.getCount();
@@ -122,6 +142,13 @@ public class ResumeSceneController implements FxController{
                     saveDataGame.setLevel(player.getLevel());
                     saveDataGame.setAp(player.getAp());
                     saveDataGame.setItems(items);
+
+                    if(player.isSayda()) {
+                        player.setDefence(player.getDefence() + 15);
+                        player.setDamage(player.getDamage() + 40);
+                        player.setSpeed(player.getSpeed() + 10);
+                        player.setAp(player.getAp() + 40);
+                    }
                 }
 
                 Utils.saveData(StartApp.getSaveData());
