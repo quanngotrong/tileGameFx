@@ -28,17 +28,9 @@ public class Spell extends Bullet{
 
     @Override
     public void checkHit(){
-//        if(isPlayer == 0){
-        //Enemy hit
-//        for(Entity e : handler.getWorld().getEntityManager().getEntities()){
-//            if(!e.equals(handler.getWorld().getEntityManager().getPlayer()))
-//                continue;
-//            if(e.getCollisionBounds(0, 0).intersects(getCollisionBounds(0,0).getBoundsInLocal())){
-//                e.takeDamage(damage);
-//                SoundPlayer.PlaySound(mediaPlayer);
-//                die();
-//            }
-//        }
+        if(!entity.isActive()){
+            die();
+        }
 
         if(this.entity.getCollisionBounds(0,0).intersects(getCollisionBounds(0,0).getBoundsInLocal())){
             this.entity.takeDamage(damage);
@@ -56,22 +48,6 @@ public class Spell extends Bullet{
         xMove = 0;
         yMove = 0;
 
-//        if(y > handler.getWorld().getEntityManager().getPlayer().getY() + 25){ //up
-//            direction = 1;
-//            yMove = -speed;
-//        }
-//        if(y < handler.getWorld().getEntityManager().getPlayer().getY() + 25){ //down
-//            direction = 2;
-//            yMove = speed;
-//        }
-//        if(x < handler.getWorld().getEntityManager().getPlayer().getX() + 25){ //right
-//            direction = 4;
-//            xMove = speed;
-//        }
-//        if(x > handler.getWorld().getEntityManager().getPlayer().getX() + 25){ //left
-//            direction = 3;
-//            xMove = -speed;
-//        }
         if(y > entity.getY() + 25){ //up
             direction = 1;
             yMove = -speed;
