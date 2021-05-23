@@ -1,4 +1,4 @@
-module org.example {
+module org.teamGame {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
