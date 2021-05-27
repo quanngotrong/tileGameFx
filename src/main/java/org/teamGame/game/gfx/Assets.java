@@ -105,7 +105,7 @@ public class Assets {
         SpriteSheet crystal_clear = new SpriteSheet(ImageLoader.loadImage("/textures/BladeY.png"));
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));
         for(int i=0; i<=12; i++){
-            tree[i] = ImageLoader.loadImage("/textures/tree/tree (" + i + ").png");
+            tree[i] = ImageLoader.loadImage("/textures/tree/tree" + i + ".png");
         }
 
         // map
