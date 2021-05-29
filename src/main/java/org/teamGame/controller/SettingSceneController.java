@@ -10,7 +10,7 @@ import org.teamGame.util.Utils;
 
 public class SettingSceneController implements FxController{
 
-    HandlerApp handlerApp;
+    private HandlerApp handlerApp;
 
     public SettingSceneController(HandlerApp handlerApp){
         this.handlerApp = handlerApp;

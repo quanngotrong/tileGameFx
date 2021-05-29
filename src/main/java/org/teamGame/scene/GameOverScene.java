@@ -17,8 +17,6 @@ public class GameOverScene extends SceneFx{
         //music
         sceneSound = Sound.gameover;
         handlerApp.getSoundManager().addSound(sceneSound);
-//        if(!Configs.IS_MUTE)
-//            sceneSound.play();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+ fxml+ ".fxml"));
         fxmlLoader.setController(new GameOverController(handlerApp));

@@ -19,8 +19,6 @@ public class ChooseCharacterScene extends SceneFx{
         //music
         sceneSound = Sound.uchiha;
         handlerApp.getSoundManager().addSound(sceneSound);
-//        if(!Configs.IS_MUTE)
-//            sceneSound.play();
 
         chooseCharacterController = new ChooseCharacterController(handlerApp);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+ fxml+ ".fxml"));

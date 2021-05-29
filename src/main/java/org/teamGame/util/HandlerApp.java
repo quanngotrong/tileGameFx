@@ -43,20 +43,8 @@ public class HandlerApp {
         return app;
     }
 
-    public void setApp(StartApp app) {
-        this.app = app;
-    }
-
     public Stage getStage() {
         return app.getStage();
-    }
-
-    public GameScene getGameScene() {
-        return gameScene;
-    }
-
-    public void setGameScene(GameScene gameScene) {
-        this.gameScene = gameScene;
     }
 
     public GameManager getGameManager() {

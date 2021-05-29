@@ -32,7 +32,9 @@ public class Utils {
         return builder.toString();
     }
 
-    //string to int
+    /*
+    convert string to int
+    */
     public static int parseInt(String number) {
         try {
             return Integer.parseInt(number);
@@ -42,7 +44,9 @@ public class Utils {
         }
     }
 
-    //load data
+    /*
+    load data
+     */
     public static SaveData loadData(){
         try {
             SaveData saveData = (SaveData) ResourceManager.load("src/main/resources/SavedData/savedData.save");
@@ -55,7 +59,9 @@ public class Utils {
 
     }
 
-    //save data
+    /*
+    save data
+     */
     public static void saveData(SaveData saveData){
         try{
             ResourceManager.save(saveData, "src/main/resources/SavedData/savedData.save");
@@ -65,7 +71,9 @@ public class Utils {
         }
     }
 
-    //choose character
+    /*
+    return character
+     */
     public static Image chooseCharacter(int i){
         if(i == 1){
             return Assets.character1;
@@ -97,7 +105,9 @@ public class Utils {
         return Assets.character0;
     }
 
-    //reset game
+    /*
+    reset game
+     */
     public static void resetGame(){
         SaveData save = new SaveData();
         save.setGold(500);

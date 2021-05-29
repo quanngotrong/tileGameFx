@@ -22,8 +22,6 @@ public class LoadScene extends SceneFx{
         //music
         sceneSound = Sound.uchiha;
         handlerApp.getSoundManager().addSound(sceneSound);
-//        if(!Configs.IS_MUTE)
-//            sceneSound.play();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+ fxml+ ".fxml"));
         loadController = new LoadController(handlerApp);
