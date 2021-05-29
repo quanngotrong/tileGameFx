@@ -1,8 +1,7 @@
-module org.teamGame {
+ module org.teamGame.tileGameFx {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
-
 
     opens org.teamGame to javafx.fxml;
     opens org.teamGame.controller;
@@ -16,6 +15,7 @@ module org.teamGame {
     opens org.teamGame.game.entities;
     opens org.teamGame.game.entities.creatures;
     opens org.teamGame.sounds;
+    opens org.teamGame.save;
 
     exports org.teamGame;
     exports org.teamGame.controller;
@@ -24,6 +24,7 @@ module org.teamGame {
     exports org.teamGame.game;
     exports org.teamGame.game.worlds;
     exports org.teamGame.game.gfx;
+    exports org.teamGame.save;
 
     exports org.teamGame.game.input;
     exports org.teamGame.game.entities;
