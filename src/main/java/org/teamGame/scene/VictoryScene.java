@@ -18,8 +18,6 @@ public class VictoryScene extends SceneFx{
         //music
         sceneSound = Sound.victory;
         handlerApp.getSoundManager().addSound(sceneSound);
-//        if(!Configs.IS_MUTE)
-//            sceneSound.play();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+ fxml+ ".fxml"));
         fxmlLoader.setController(new VictoryController(handlerApp));

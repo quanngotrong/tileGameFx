@@ -98,8 +98,6 @@ public class GameManager {
         init();
         this.scene = handlerApp.getStage().getScene();
 
-//        StartApp.getSaveData().savedGame.get(0).setCharacter(4);
-
         //create resume state
         resumeStage = new Stage();
         resumeScene = new ResumeScene(handlerApp, handler);
@@ -116,7 +114,6 @@ public class GameManager {
         //graphic
         g = canvas.getGraphicsContext2D();
 
-        System.out.println(handlerApp.getStage().getScene());
         //input
         keyManager = new KeyManager(scene, handler);
         keyManager.addListener();
@@ -135,19 +132,6 @@ public class GameManager {
         //start game loop
         start = System.nanoTime();
         timePerUpDate = 1000000000/Configs.FPS;
-
-//        AnimationTimer gameLoop = new AnimationTimer() {
-//            @Override
-//            public void handle(long l) {
-//
-//                if(l - start > timePerUpDate) {
-//                    start = l;
-//                    tick();
-//                    render(g);
-//                }
-//            }
-//        };
-//        gameLoop.start();
 
         myTimer = new MyTimer();
     }
@@ -177,8 +161,6 @@ public class GameManager {
     public void render(GraphicsContext g){
         g.clearRect(0, 0, width, height);
         gameState.render(g);
-
-
     }
 
     //getter and setter

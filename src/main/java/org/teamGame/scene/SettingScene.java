@@ -17,8 +17,6 @@ public class SettingScene extends SceneFx{
         //music
         sceneSound = Sound.uchiha;
         handlerApp.getSoundManager().addSound(sceneSound);
-//        if(!Configs.IS_MUTE)
-//            sceneSound.play();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+ fxml+ ".fxml"));
         fxmlLoader.setController(new SettingSceneController(handlerApp));

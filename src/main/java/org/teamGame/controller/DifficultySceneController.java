@@ -79,7 +79,6 @@ public class DifficultySceneController implements FxController {
                 handlerApp.getGameManager().start();
 
                 handlerApp.getGameManager().getMyTimer().start();
-                System.out.println("ha");
             }
         });
 

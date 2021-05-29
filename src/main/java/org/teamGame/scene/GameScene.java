@@ -21,8 +21,6 @@ public class GameScene extends SceneFx{
         //music
         sceneSound = Sound.main;
         handlerApp.getSoundManager().addSound(sceneSound);
-//        if(!Configs.IS_MUTE)
-//            sceneSound.play();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/"+ fxml+ ".fxml"));
         fxmlLoader.setController(new GameController(handlerApp, this, this.saved));

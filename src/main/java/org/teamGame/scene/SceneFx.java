@@ -27,9 +27,9 @@ public abstract class SceneFx {
     }
 
     public void playSound(){
-        if(!Configs.IS_MUTE){
+//        if(!Configs.IS_MUTE){
             sceneSound.play();
-        }
+//        }
     }
 
     public void stopSound(){
