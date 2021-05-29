@@ -55,8 +55,8 @@
                     <stripDebug>true</stripDebug>
                     <noHeaderFiles>true</noHeaderFiles>
                     <jlinkImageName>tileGameFx</jlinkImageName>
-                    <launcher>play-lone-ranger</launcher>
-                    <jlinkZipName>tileGameFx</jlinkZipName>
+                    <launcher>the-lone-avenger</launcher>
+                    <jlinkZipName>the-lone-avenger</jlinkZipName>
                     <mainClass>org.teamGame.Launcher</mainClass>
                 </configuration>
             </plugin>

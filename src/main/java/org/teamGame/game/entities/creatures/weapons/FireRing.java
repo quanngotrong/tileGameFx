@@ -21,13 +21,6 @@ public class FireRing extends Creature {
     private long startTime;
     private long countDown = 3500;
 
-//    public FireRing(Handler handler, int damage,  Enemy master) {
-//        super(handler, Assets.fireRing, master.getX(), master.getY(), master.getWidth(), master.getHeight(), damage);
-//        this.masterE = master;
-//        this.isPlayer = 0;
-//        startTime = System.currentTimeMillis();
-//    }
-
     public FireRing(Handler handler, int damage,  Enemy master, int isPlayer) {
         super(handler, Assets.fireRing, master.getX() , master.getY(), master.getWidth(), master.getHeight(), damage);
         this.masterE = master;
@@ -45,13 +38,6 @@ public class FireRing extends Creature {
         bounds.setWidth(620);
     }
 
-//    public FireRing(Handler handler, Image image, double x, double y, int width, int height, int damage,  Player master) {
-//        super(handler, Assets.fireRing, x, y, width, height, damage);
-//        this.masterP = master;
-//        this.isPlayer = 1;
-//        startTime = System.currentTimeMillis();
-//
-//    }
 
     @Override
     public void tick() {
@@ -69,9 +55,7 @@ public class FireRing extends Creature {
             if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0)
                     .intersects(getCollisionBounds(0,0).getBoundsInLocal())){
                 handler.getWorld().getEntityManager().getPlayer().takeDamage(1 + handler.getWorld().getEntityManager().getPlayer().getDefence());
-                System.out.println(damage);
             }
-            System.out.println(x +" " + y+ " " + bounds.getHeight()+" "+ bounds.getWidth());
         }
     }
 
@@ -90,11 +74,7 @@ public class FireRing extends Creature {
 
     @Override
     protected boolean collisionWithTile(int x, int y){
-//        for(int z = 0; z<handler.getWorld().getLayer(); z++) {
-//            if(handler.getWorld().getTile(x, y, z).isSolid()){
-//                return true;
-//            }
-//        }
+
         return false;
     }
 

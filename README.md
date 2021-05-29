@@ -1,5 +1,32 @@
-# tileGameFx
-bản nâng cấp cảu TileAboutGame
+# The Lone Avenger - tile game with javafx
+(updated version of tileAboutGame)
+
+##Details
+**Created by**: [Ngô Trọng Quân](https://github.com/quybnz1), [Nguyễn Anh Tuấn](https://github.com/tuan30vh), [Ngô Đăng Hanh](https://github.com/hanh-nd), [Nguyễn Thanh Tùng](https://github.com/RoverNguyen), Lê Minh Hoàng
+
+
+##Features
+- 10 skins
+- 3 mode: easy, medium, hard
+- many cool items
+- save and reload game
+- 4 maps with many interesting enemies, npc
+##Implementation
+- Navigation is via FXML files
+- 
+- 
+
+##Screenshots
+
+
+##Download and play
+
+
+###Prerequisites
+This version doesn't require a pre-existing Java runtime. This is possible because
+the project takes advantage of jlink to create a custom runtime image which
+comes bundled with the Java runtime.
+
 
 sử dụng thêm javafx.fxml và maven
 
